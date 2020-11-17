@@ -1,2 +1,2 @@
 # cobalt
-Clean Automoation Pipelines for everyone to anything
+Clean automation piplines for everyone to everything
