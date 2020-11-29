@@ -13,7 +13,6 @@ namespace Cobalt.Unit
         public CobaltUnit(bool emptyStringWhenMissing, ExpandoObject root)
         {
             _valueStore = new Dictionary<string, object>();
-
             _emptyStringWhenMissing = emptyStringWhenMissing;
             if (root != null) Augment(root);
         }
