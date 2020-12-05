@@ -17,6 +17,8 @@ namespace Cobalt.Unit
             if (root != null) Augment(root);
         }
 
+        #region -- Dynamics; May go away from these in favor of simple dictionaries
+
         public override bool TrySetMember(SetMemberBinder binder, object value)
         {
             UpdateDictionary(binder.Name, value);
@@ -103,5 +105,7 @@ namespace Cobalt.Unit
         {
             return this;
         }
+
+        #endregion
     }
 }

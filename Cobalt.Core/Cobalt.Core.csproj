@@ -83,7 +83,7 @@
     <Compile Include="Pipeline\Rules\Sample\MyObj.cs" />
     <Compile Include="Pipeline\Rules\Sample\MySet.cs" />
     <Compile Include="Pipeline\Stages\CobaltStage.cs" />
-    <Compile Include="Pipeline\Work\CobaltWork.cs" />
+    <Compile Include="Pipeline\Operation\CobaltOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\CobaltUnitSet.cs" />
     <Compile Include="Unit\CobaltUnit.cs" />
