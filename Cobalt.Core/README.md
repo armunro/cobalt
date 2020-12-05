@@ -5,8 +5,8 @@ Automation/ETL pipelines are commonplace in larger information processing applic
 ##How?
 - Rules/Specifications - Formalized and documentable rules about how information should be directed
 - Actions - Send a request, create a file, insert a record.
-- Interactions - Do something with c
-- Standard Interaction Language
+- Interactions - 
+- Standard Interaction Language - 
 
 
 
