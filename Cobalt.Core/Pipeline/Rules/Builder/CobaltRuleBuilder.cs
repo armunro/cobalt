@@ -44,7 +44,7 @@ namespace Cobalt.Pipeline.Rules.Builder
 
         public CobaltRule<TTarget> Build()
         {
-            return new CobaltRule<TTarget>((target) =>
+            return new CobaltRule<TTarget>(target =>
             {
                 var conditionResult = _when.Func.Invoke(target);
 

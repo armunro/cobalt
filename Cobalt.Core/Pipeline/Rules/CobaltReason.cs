@@ -6,10 +6,9 @@ namespace Cobalt.Pipeline.Rules
         {
             IsSatisfied = isSatisfied;
             Message = message;
-            
         }
 
         public bool IsSatisfied { get; set; }
-      public string Message { get; set; }
+        public string Message { get; set; }
     }
 }

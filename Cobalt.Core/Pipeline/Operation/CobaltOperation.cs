@@ -1,6 +1,6 @@
-namespace Cobalt.Pipeline.Work
+namespace Cobalt.Pipeline.Operation
 {
-    public abstract class CobaltOperation
+    public  class CobaltOperation
     {
         //concept: will describe how to modify the CobaltUnit and why. Any rules will be referenced.
     }

@@ -7,7 +7,7 @@ namespace Cobalt.Pipeline.Rules.Composites
     {
         protected CobaltCompositeRule(IEnumerable<CobaltRule<T>> specs) : base(null)
         {
-            FromDelegate((target) =>
+            FromDelegate(target =>
             {
                 var results = specs.Select(x => x.IsSatisfiedBy(target));
                 return IsCompositeSatisfied(results);

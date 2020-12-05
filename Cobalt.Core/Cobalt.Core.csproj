@@ -65,8 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cblt.cs" />
+    <Compile Include="Pipeline\Channel\OutputChannel.cs" />
     <Compile Include="Pipeline\CobaltPipeline.cs" />
-    <Compile Include="Pipeline\CobaltPipelineState.cs" />
     <Compile Include="Pipeline\Rules\Builder\Clauses\ResultClause.cs" />
     <Compile Include="Pipeline\Rules\Builder\Clauses\ThenClause.cs" />
     <Compile Include="Pipeline\Rules\Builder\Clauses\WhenClause.cs" />
@@ -84,6 +84,7 @@
     <Compile Include="Pipeline\Rules\Sample\MySet.cs" />
     <Compile Include="Pipeline\Stages\CobaltStage.cs" />
     <Compile Include="Pipeline\Operation\CobaltOperation.cs" />
+    <Compile Include="Pipeline\Stages\StageBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\CobaltUnitSet.cs" />
     <Compile Include="Unit\CobaltUnit.cs" />
