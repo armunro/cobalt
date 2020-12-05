@@ -22,9 +22,13 @@ namespace Cobalt.Pipeline
         }
 
 
-        public void RegisterDataChannel<T>(InputChannel channel)
+        private void RegisterDataChannel<T>(InputChannel channel)
         {
             InputChannels.Add(typeof(T), channel);
+        }
+        private void RegisterDataChannel(InputChannel channel)
+        {
+            InputChannels.Add(channel.GetType(), channel);
         }
 
 
@@ -43,6 +47,12 @@ namespace Cobalt.Pipeline
             var dataChannel = (InputChannel) Activator.CreateInstance(typeof(TChannel), newOptions);
 
             RegisterDataChannel<TChannel>(dataChannel);
+            return this;
+        }
+        
+        public CobaltPipeline Channel(InputChannel inputChannelInstance) 
+        {
+            RegisterDataChannel(inputChannelInstance);
             return this;
         }
 

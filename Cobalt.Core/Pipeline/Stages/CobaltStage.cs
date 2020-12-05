@@ -5,6 +5,6 @@ namespace Cobalt.Pipeline.Stages
 {
     public abstract class CobaltStage
     {
-        public List<CobaltOperation> Operations { get; set; } = new List<CobaltOperation>();
+        public List<CobaltStep> Operations { get; set; } = new List<CobaltStep>();
     }
 }

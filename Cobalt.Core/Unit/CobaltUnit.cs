@@ -10,7 +10,7 @@ namespace Cobalt.Unit
         private readonly Dictionary<string, object> _valueStore;
 
 
-        public CobaltUnit(bool emptyStringWhenMissing, ExpandoObject root)
+        public CobaltUnit(bool emptyStringWhenMissing = false, ExpandoObject root = null)
         {
             _valueStore = new Dictionary<string, object>();
             _emptyStringWhenMissing = emptyStringWhenMissing;

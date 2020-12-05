@@ -5,16 +5,16 @@ namespace Cobalt.Pipeline.Stages
 {
     public class StageBuilder
     {
-        private List<CobaltOperation> Operations { get; set; }
+        private List<CobaltStep> Operations { get; set; }
 
         public StageBuilder()
         {
-            Operations = new List<CobaltOperation>();
+            Operations = new List<CobaltStep>();
         }
         
-        public StageBuilder Operation(CobaltOperation operation)
+        public StageBuilder Op(CobaltStep step)
         {
-            Operations.Add(operation);
+            Operations.Add(step);
             return this;
         }
     }
