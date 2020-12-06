@@ -25,15 +25,9 @@ namespace Cobalt.Pipeline
             Stages = new List<CobaltStage>();
         }
 
-
-        private void RegisterInputChannel(InputChannel channel)
-        {
-            Input.InputChannels.Add(channel.GetType(), channel);
-        }
-
         public CobaltPipeline Channel(InputChannel inputChannelInstance)
         {
-            RegisterInputChannel(inputChannelInstance);
+            Input.InputChannels.Add(inputChannelInstance.GetType(), inputChannelInstance);
             return this;
         }
 
@@ -42,8 +36,7 @@ namespace Cobalt.Pipeline
             //load all sets
             foreach (var channel in Input.InputChannels)
             {
-                UnitSets.Add(channel.GetType(),
-                    new CobaltUnitSet(channel.Key.Name, await channel.Value.GetDataAsync()));
+                UnitSets.Add(channel.GetType(), new CobaltUnitSet(channel.Key.Name, await channel.Value.GetDataAsync()));
             }
 
             foreach (var stage in Stages)
