@@ -5,6 +5,8 @@ namespace Cobalt.Pipeline.Stages
 {
     public class StageBuilder
     {
+        public string Name { get; set; }
+        public string Description { get; set; }
         private List<CobaltStep> Operations { get; set; }
 
         // [ctor]
@@ -12,7 +14,11 @@ namespace Cobalt.Pipeline.Stages
         {
             Operations = new List<CobaltStep>();
         }
-        
+
+       
+
+
+
         public StageBuilder Step(CobaltStep step)
         {
             Operations.Add(step);

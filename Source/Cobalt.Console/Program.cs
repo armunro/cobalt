@@ -19,19 +19,20 @@ namespace Cobalt.Console
             second.PropertyB = "Dog";
             second.PropertyC = "Cat";
 
+            InMemInputChannel inputChannel = new InMemInputChannel(first, second);
+      
+            var pipeline = Cblt.Pipeline
+                .In(inputChannel)
+                .Stage("Filter-1",
+                    stage =>
+                    {
+                        stage.Step(new FilterStep(unit =>
+                        {
+                            return unit.PropertyA.StartsWith("A") || unit.PropertyA.StartsWith("B");
+                        }));
+                    });
 
-            InMemInputChannel inputChannel = new InMemInputChannel();
-            inputChannel.AddUnits(first, second);
-
-
-            var pipe = Cblt.Pipeline
-                .Channel(inputChannel)
-                .Stage(builder => builder
-                    .Step(new FilterStep(unit => unit.PropertyA.StartsWith("A")))
-                    .Step(new FilterStep(unit => unit.PropertyB.StartsWith("B")))
-                );
-
-            await pipe.ExecuteAsync();
+            await pipeline.ExecuteAsync();
         }
     }
 }

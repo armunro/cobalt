@@ -24,7 +24,7 @@ namespace Cobalt.Pipeline
 
         }
 
-        public CobaltPipeline Channel(InputChannel inputChannelInstance)
+        public CobaltPipeline In(InputChannel inputChannelInstance)
         {
             Input.InputChannels.Add(inputChannelInstance.GetType(), inputChannelInstance);
             return this;
@@ -47,7 +47,7 @@ namespace Cobalt.Pipeline
             }
         }
 
-        public CobaltPipeline Stage(Action<StageBuilder> stageBuilder)
+        public CobaltPipeline Stage(string name, Action<StageBuilder> stageBuilder)
         {
             StageBuilder builder = new StageBuilder();
             stageBuilder.Invoke(builder);

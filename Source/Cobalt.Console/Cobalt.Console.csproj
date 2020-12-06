@@ -43,9 +43,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cobalt.Core\Cobalt.Core.csproj">
+    <ProjectReference Include="..\Cobalt\Cobalt.csproj">
       <Project>{9811052c-435d-4ce6-b2d2-085cac09a7ee}</Project>
-      <Name>Cobalt.Core</Name>
+      <Name>Cobalt</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

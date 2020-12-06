@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Source\cobalt\Source" t="IncludeFlat">
-      <e p="Cobalt.Console" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Cobalt.Console.csproj" t="IncludeRecursive" />
-        <e p="obj" t="ExcludeRecursive" />
-        <e p="Program.cs" t="Include" />
-        <e p="Properties" t="Include">
-          <e p="AssemblyInfo.cs" t="Include" />
-        </e>
-      </e>
-      <e p="Cobalt.Core" t="IncludeRecursive">
+      <e p="cobalt" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Cblt.cs" t="Include" />
-        <e p="Cobalt.Core.csproj" t="IncludeRecursive" />
+        <e p="Cobalt.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Pipeline" t="Include">
@@ -29,20 +20,25 @@
           <e p="CobaltPipeline.cs" t="Include" />
           <e p="PipelineInput.cs" t="Include" />
           <e p="PipelineOutput.cs" t="Include" />
+          <e p="Rules" t="Include">
+            <e p="CobaltRule.cs" t="Include" />
+          </e>
           <e p="Stages" t="Include">
             <e p="CobaltStage.cs" t="Include" />
             <e p="StageBuilder.cs" t="Include" />
           </e>
           <e p="Steps" t="Include">
-            <e p="Action" t="Include" />
+            <e p="Action" t="Include">
+              <e p="IStepAction.cs" t="Include" />
+            </e>
             <e p="CobaltStep.cs" t="Include" />
             <e p="FilterStep.cs" t="Include" />
             <e p="Interaction" t="Include">
-              <e p="IStepBehavior.cs" t="Include" />
+              <e p="IStepInteraction.cs" t="Include" />
               <e p="Local" t="Include">
-                <e p="CreateBehavior.cs" t="Include" />
-                <e p="DestroyBehavior.cs" t="Include" />
-                <e p="ModifyBehavior.cs" t="Include" />
+                <e p="CreateInteraction.cs" t="Include" />
+                <e p="DestroyInteraction.cs" t="Include" />
+                <e p="ModifyInteraction.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -54,6 +50,15 @@
         <e p="Unit" t="Include">
           <e p="CobaltUnit.cs" t="Include" />
           <e p="CobaltUnitSet.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Cobalt.Console" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Cobalt.Console.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
         </e>
       </e>
       <e p="Cobalt.sln" t="IncludeFlat" />

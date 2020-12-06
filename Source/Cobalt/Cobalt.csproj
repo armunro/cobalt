@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cobalt</RootNamespace>
-    <AssemblyName>Cobalt.Core</AssemblyName>
+    <AssemblyName>Cobalt</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -71,6 +71,8 @@
     <Compile Include="Pipeline\CobaltPipeline.cs" />
     <Compile Include="Pipeline\PipelineInput.cs" />
     <Compile Include="Pipeline\PipelineOutput.cs" />
+    <Compile Include="Pipeline\Rules\CobaltRule.cs" />
+    <Compile Include="Pipeline\Steps\Action\IStepAction.cs" />
     <Compile Include="Pipeline\Steps\Interaction\IStepInteraction.cs" />
     <Compile Include="Pipeline\Steps\Interaction\Local\CreateInteraction.cs" />
     <Compile Include="Pipeline\Steps\Interaction\Local\DestroyInteraction.cs" />
@@ -89,9 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pipeline\Steps\Action" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
