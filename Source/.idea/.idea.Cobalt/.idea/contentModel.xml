@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Code\cobalt\Source" t="IncludeFlat">
+      <e p="Cobalt.Console" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Cobalt.Console.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Cobalt.Core" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Cblt.cs" t="Include" />
+        <e p="Cobalt.Core.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Pipeline" t="Include">
+          <e p="Channel" t="Include">
+            <e p="InputChannel.cs" t="Include" />
+            <e p="Local" t="Include">
+              <e p="InMemInputChannel.cs" t="Include" />
+              <e p="InMemOutputChannel.cs" t="Include" />
+            </e>
+            <e p="OutputChannel.cs" t="Include" />
+          </e>
+          <e p="CobaltPipeline.cs" t="Include" />
+          <e p="Rules" t="Include">
+            <e p="Builder" t="Include">
+              <e p="Clauses" t="Include">
+                <e p="ResultClause.cs" t="Include" />
+                <e p="ThenClause.cs" t="Include" />
+                <e p="WhenClause.cs" t="Include" />
+              </e>
+              <e p="CobaltRuleBuilder.cs" t="Include" />
+            </e>
+            <e p="CobaltReason.cs" t="Include" />
+            <e p="CobaltRule.cs" t="Include" />
+            <e p="CobaltRuleFunction.cs" t="Include" />
+            <e p="CobaltRuleResult.cs" t="Include" />
+            <e p="CobaltRuleSet.cs" t="Include" />
+            <e p="Composites" t="Include">
+              <e p="CobaltAndRule.cs" t="Include" />
+              <e p="CobaltCompositeRule.cs" t="Include" />
+              <e p="CobaltOrRule.cs" t="Include" />
+            </e>
+            <e p="Sample" t="Include">
+              <e p="MyObj.cs" t="Include" />
+              <e p="MySet.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Stages" t="Include">
+            <e p="CobaltStage.cs" t="Include" />
+            <e p="StageBuilder.cs" t="Include" />
+          </e>
+          <e p="Steps" t="Include">
+            <e p="CobaltStep.cs" t="Include" />
+            <e p="FilterStep.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="README.md" t="Include" />
+        <e p="Unit" t="Include">
+          <e p="CobaltUnit.cs" t="Include" />
+          <e p="CobaltUnitSet.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Cobalt.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Tools" t="Include" />
+    </e>
+    <e p="C:\Users\me\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\me\.Rider2019.2\system\resharper-host\Local\Transient\ReSharperHost\v192\SolutionCaches\_Cobalt.1019143855.00" t="ExcludeRecursive" />
+  </component>
+</project>
