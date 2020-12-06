@@ -18,11 +18,10 @@ namespace Cobalt.Pipeline
         public CobaltPipeline()
         {
             Input = new PipelineInput();
-            Output = new PipelineOutput();
-
-            Input.InputChannels = new Dictionary<Type, InputChannel>();
-            UnitSets = new Dictionary<Type, CobaltUnitSet>();
             Stages = new List<CobaltStage>();
+            Output = new PipelineOutput();
+            UnitSets = new Dictionary<Type, CobaltUnitSet>();
+
         }
 
         public CobaltPipeline Channel(InputChannel inputChannelInstance)
