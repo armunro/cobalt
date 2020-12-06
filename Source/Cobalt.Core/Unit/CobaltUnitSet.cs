@@ -4,13 +4,15 @@ namespace Cobalt.Unit
 {
     public class CobaltUnitSet
     {
+        public string GlobalName { get; }
+        public List<CobaltUnit> Data { get; } 
+
         public CobaltUnitSet(string globalName, IEnumerable<CobaltUnit> models)
         {
             GlobalName = globalName;
             Data.AddRange(models);
         }
 
-        public string GlobalName { get; }
-        public List<CobaltUnit> Data { get; } = new List<CobaltUnit>();
+
     }
 }

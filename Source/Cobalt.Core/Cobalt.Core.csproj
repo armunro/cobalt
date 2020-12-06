@@ -72,21 +72,7 @@
     <Compile Include="Pipeline\PipelineInput.cs" />
     <Compile Include="Pipeline\PipelineOutput.cs" />
     <Compile Include="Pipeline\Steps\FilterStep.cs" />
-    <Compile Include="Pipeline\Rules\Builder\Clauses\ResultClause.cs" />
-    <Compile Include="Pipeline\Rules\Builder\Clauses\ThenClause.cs" />
-    <Compile Include="Pipeline\Rules\Builder\Clauses\WhenClause.cs" />
-    <Compile Include="Pipeline\Rules\Builder\CobaltRuleBuilder.cs" />
-    <Compile Include="Pipeline\Rules\CobaltReason.cs" />
-    <Compile Include="Pipeline\Rules\CobaltRule.cs" />
-    <Compile Include="Pipeline\Rules\Composites\CobaltAndRule.cs" />
-    <Compile Include="Pipeline\Rules\Composites\CobaltCompositeRule.cs" />
-    <Compile Include="Pipeline\Rules\Composites\CobaltOrRule.cs" />
-    <Compile Include="Pipeline\Rules\CobaltRuleFunction.cs" />
-    <Compile Include="Pipeline\Rules\CobaltRuleResult.cs" />
-    <Compile Include="Pipeline\Rules\CobaltRuleSet.cs" />
     <Compile Include="Pipeline\Channel\InputChannel.cs" />
-    <Compile Include="Pipeline\Rules\Sample\MyObj.cs" />
-    <Compile Include="Pipeline\Rules\Sample\MySet.cs" />
     <Compile Include="Pipeline\Stages\CobaltStage.cs" />
     <Compile Include="Pipeline\Steps\CobaltStep.cs" />
     <Compile Include="Pipeline\Stages\StageBuilder.cs" />
@@ -99,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pipeline\Rules" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

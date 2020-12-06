@@ -7,6 +7,7 @@ namespace Cobalt.Pipeline.Stages
     {
         private List<CobaltStep> Operations { get; set; }
 
+        // [ctor]
         public StageBuilder()
         {
             Operations = new List<CobaltStep>();

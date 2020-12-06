@@ -29,30 +29,7 @@
           <e p="CobaltPipeline.cs" t="Include" />
           <e p="PipelineInput.cs" t="Include" />
           <e p="PipelineOutput.cs" t="Include" />
-          <e p="Rules" t="Include">
-            <e p="Builder" t="Include">
-              <e p="Clauses" t="Include">
-                <e p="ResultClause.cs" t="Include" />
-                <e p="ThenClause.cs" t="Include" />
-                <e p="WhenClause.cs" t="Include" />
-              </e>
-              <e p="CobaltRuleBuilder.cs" t="Include" />
-            </e>
-            <e p="CobaltReason.cs" t="Include" />
-            <e p="CobaltRule.cs" t="Include" />
-            <e p="CobaltRuleFunction.cs" t="Include" />
-            <e p="CobaltRuleResult.cs" t="Include" />
-            <e p="CobaltRuleSet.cs" t="Include" />
-            <e p="Composites" t="Include">
-              <e p="CobaltAndRule.cs" t="Include" />
-              <e p="CobaltCompositeRule.cs" t="Include" />
-              <e p="CobaltOrRule.cs" t="Include" />
-            </e>
-            <e p="Sample" t="Include">
-              <e p="MyObj.cs" t="Include" />
-              <e p="MySet.cs" t="Include" />
-            </e>
-          </e>
+          <e p="Rules" t="Include" />
           <e p="Stages" t="Include">
             <e p="CobaltStage.cs" t="Include" />
             <e p="StageBuilder.cs" t="Include" />
