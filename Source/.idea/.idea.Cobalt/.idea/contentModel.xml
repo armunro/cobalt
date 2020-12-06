@@ -27,6 +27,8 @@
             <e p="OutputChannel.cs" t="Include" />
           </e>
           <e p="CobaltPipeline.cs" t="Include" />
+          <e p="PipelineInput.cs" t="Include" />
+          <e p="PipelineOutput.cs" t="Include" />
           <e p="Rules" t="Include">
             <e p="Builder" t="Include">
               <e p="Clauses" t="Include">

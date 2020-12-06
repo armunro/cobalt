@@ -9,63 +9,59 @@ namespace Cobalt.Pipeline
 {
     public class CobaltPipeline
     {
-        private  Dictionary<Type, CobaltUnitSet> DataSets { get; set; }
-        private  Dictionary<Type, InputChannel> InputChannels { get; set; }
-        private  List<CobaltStage> Stages { get; set; }
+        public PipelineInput Input { get; set; }
+        private List<CobaltStage> Stages { get; set; }
+        public PipelineOutput Output { get; set; }
+        private Dictionary<Type, CobaltUnitSet> UnitSets { get; set; }
 
 
         public CobaltPipeline()
         {
-            InputChannels = new Dictionary<Type, InputChannel>();
-            DataSets = new Dictionary<Type, CobaltUnitSet>();
+            Input = new PipelineInput();
+            Output = new PipelineOutput();
+
+            Input.InputChannels = new Dictionary<Type, InputChannel>();
+            UnitSets = new Dictionary<Type, CobaltUnitSet>();
             Stages = new List<CobaltStage>();
         }
 
 
-        private void RegisterDataChannel<T>(InputChannel channel)
+        private void RegisterInputChannel(InputChannel channel)
         {
-            InputChannels.Add(typeof(T), channel);
-        }
-        private void RegisterDataChannel(InputChannel channel)
-        {
-            InputChannels.Add(channel.GetType(), channel);
+            Input.InputChannels.Add(channel.GetType(), channel);
         }
 
-
-        public void FillSet(Type channelType, CobaltUnitSet unitSet)
+        public CobaltPipeline Channel(InputChannel inputChannelInstance)
         {
-            DataSets.Add(channelType, unitSet);
-        }
-
-
-        public CobaltPipeline Channel<TChannel, TOptions>(Action<TOptions> options)
-            where TChannel : InputChannel where TOptions : new()
-        {
-            var newOptions = new TOptions();
-            options(newOptions);
-
-            var dataChannel = (InputChannel) Activator.CreateInstance(typeof(TChannel), newOptions);
-
-            RegisterDataChannel<TChannel>(dataChannel);
-            return this;
-        }
-        
-        public CobaltPipeline Channel(InputChannel inputChannelInstance) 
-        {
-            RegisterDataChannel(inputChannelInstance);
+            RegisterInputChannel(inputChannelInstance);
             return this;
         }
 
         public async Task ExecuteAsync()
         {
-            foreach (var channel in InputChannels)
-                FillSet(channel.GetType(),
+            //load all sets
+            foreach (var channel in Input.InputChannels)
+            {
+                UnitSets.Add(channel.GetType(),
                     new CobaltUnitSet(channel.Key.Name, await channel.Value.GetDataAsync()));
+            }
+
+            foreach (var stage in Stages)
+            {
+                foreach (var operation in stage.Steps)
+                {
+                    operation.ExecuteStep();
+                }
+            }
         }
 
-        public CobaltPipeline Stage(Action<StageBuilder> builder)
+        public CobaltPipeline Stage(Action<StageBuilder> stageBuilder)
         {
-            builder.Invoke(new StageBuilder());
+            StageBuilder builder = new StageBuilder();
+            stageBuilder.Invoke(builder);
+
+            CobaltStage stage = builder.BuildStage();
+            Stages.Add(stage);
             return this;
         }
     }

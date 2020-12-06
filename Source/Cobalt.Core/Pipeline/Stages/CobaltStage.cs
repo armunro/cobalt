@@ -3,8 +3,8 @@ using Cobalt.Pipeline.Operation;
 
 namespace Cobalt.Pipeline.Stages
 {
-    public abstract class CobaltStage
+    public  class CobaltStage
     {
-        public List<CobaltStep> Operations { get; set; } = new List<CobaltStep>();
+        public List<CobaltStep> Steps { get; set; } = new List<CobaltStep>();
     }
 }

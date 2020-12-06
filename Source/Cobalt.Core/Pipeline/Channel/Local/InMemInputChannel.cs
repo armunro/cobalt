@@ -7,7 +7,11 @@ namespace Cobalt.Pipeline.Channel.Local
 {
     public class InMemInputChannel : InputChannel
     {
-        private List<CobaltUnit> _items;
+        private readonly List<CobaltUnit> _items;
+        public InMemInputChannel()
+        {
+            _items = new List<CobaltUnit>();
+        }
 
         public void AddUnit(CobaltUnit unit)
         {
@@ -21,10 +25,7 @@ namespace Cobalt.Pipeline.Channel.Local
         
        
 
-        public InMemInputChannel()
-        {
-            _items = new List<CobaltUnit>();
-        }
+  
         
         public override Task<IEnumerable<CobaltUnit>> GetDataAsync()
         {

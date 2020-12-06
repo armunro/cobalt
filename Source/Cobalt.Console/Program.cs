@@ -9,7 +9,7 @@ namespace Cobalt.Console
     {
         public static async Task Main(string[] args)
         {
-            // CobaltUnits are compatible with ExpandoObjects and dynamics 
+            // CobaltUnits are dynamic objects with extra features
             dynamic first = new CobaltUnit();
             first.PropertyA = "Alphabet";
             first.PropertyB = "Baseball";
@@ -18,20 +18,19 @@ namespace Cobalt.Console
             second.PropertyA = "Apple";
             second.PropertyB = "Dog";
             second.PropertyC = "Cat";
-            
-            
+
+
             InMemInputChannel inputChannel = new InMemInputChannel();
-            inputChannel.AddUnit(first);
-            inputChannel.AddUnit(second);
-            
-            
+            inputChannel.AddUnits(first, second);
+
+
             var pipe = Cblt.Pipeline
                 .Channel(inputChannel)
-                .Stage(builder =>
-                    builder
-                        .Op(new FilterStep(unit => unit.PropertyA.StartsWith("A")))
-                        .Op(new FilterStep(unit => unit.PropertyB.StartsWith("B"))));
-            
+                .Stage(builder => builder
+                    .Step(new FilterStep(unit => unit.PropertyA.StartsWith("A")))
+                    .Step(new FilterStep(unit => unit.PropertyB.StartsWith("B")))
+                );
+
             await pipe.ExecuteAsync();
         }
     }

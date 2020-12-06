@@ -69,6 +69,8 @@
     <Compile Include="Pipeline\Channel\Local\InMemInputChannel.cs" />
     <Compile Include="Pipeline\Channel\OutputChannel.cs" />
     <Compile Include="Pipeline\CobaltPipeline.cs" />
+    <Compile Include="Pipeline\PipelineInput.cs" />
+    <Compile Include="Pipeline\PipelineOutput.cs" />
     <Compile Include="Pipeline\Steps\FilterStep.cs" />
     <Compile Include="Pipeline\Rules\Builder\Clauses\ResultClause.cs" />
     <Compile Include="Pipeline\Rules\Builder\Clauses\ThenClause.cs" />

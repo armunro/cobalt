@@ -12,10 +12,15 @@ namespace Cobalt.Pipeline.Stages
             Operations = new List<CobaltStep>();
         }
         
-        public StageBuilder Op(CobaltStep step)
+        public StageBuilder Step(CobaltStep step)
         {
             Operations.Add(step);
             return this;
+        }
+
+        public CobaltStage BuildStage()
+        {
+            return new CobaltStage();
         }
     }
 }
