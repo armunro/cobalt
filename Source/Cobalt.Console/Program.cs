@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Cobalt.Pipeline.Channel.Local;
-using Cobalt.Pipeline.Operation;
+using Cobalt.Pipeline.Steps.Interaction.Local;
 using Cobalt.Unit;
 
 namespace Cobalt.Console

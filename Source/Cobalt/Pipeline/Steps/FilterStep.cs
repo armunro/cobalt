@@ -1,8 +1,7 @@
 using System;
-using System.Linq.Expressions;
 using Cobalt.Unit;
 
-namespace Cobalt.Pipeline.Operation
+namespace Cobalt.Pipeline.Steps.Interaction.Local
 {
     public class FilterStep : CobaltStep
     {

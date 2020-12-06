@@ -1,4 +1,4 @@
-﻿namespace Cobalt.Pipeline.Operation.Action
+﻿namespace Cobalt.Pipeline.Steps.Action
 {
     public interface IStepAction
     {

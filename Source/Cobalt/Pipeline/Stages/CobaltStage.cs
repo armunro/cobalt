@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Cobalt.Pipeline.Operation;
+using Cobalt.Pipeline.Steps;
 
 namespace Cobalt.Pipeline.Stages
 {

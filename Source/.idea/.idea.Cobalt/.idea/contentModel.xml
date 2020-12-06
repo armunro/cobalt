@@ -41,6 +41,7 @@
                 <e p="ModifyInteraction.cs" t="Include" />
               </e>
             </e>
+            <e p="StepTarget.cs" t="Include" />
           </e>
         </e>
         <e p="Properties" t="Include">

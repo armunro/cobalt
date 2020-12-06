@@ -7,12 +7,12 @@ namespace Cobalt.Unit
     public class CobaltUnit : DynamicObject
     {
         private readonly bool _emptyStringWhenMissing;
-        private readonly Dictionary<string, object> _valueStore;
+        private readonly Dictionary<string, object> _facts;
 
 
         public CobaltUnit(bool emptyStringWhenMissing = false, ExpandoObject root = null)
         {
-            _valueStore = new Dictionary<string, object>();
+            _facts = new Dictionary<string, object>();
             _emptyStringWhenMissing = emptyStringWhenMissing;
             if (root != null) Augment(root);
         }
@@ -40,9 +40,9 @@ namespace Cobalt.Unit
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
             var key = binder.Name;
-            if (_valueStore.ContainsKey(key))
+            if (_facts.ContainsKey(key))
             {
-                result = _valueStore[key];
+                result = _facts[key];
                 return true;
             }
 
@@ -58,8 +58,8 @@ namespace Cobalt.Unit
         public dynamic Augment(CobaltUnit obj)
         {
             //existing properties are not overwritten
-            obj._valueStore
-                .Where(pair => !_valueStore.ContainsKey(pair.Key))
+            obj._facts
+                .Where(pair => !_facts.ContainsKey(pair.Key))
                 .ToList()
                 .ForEach(pair => UpdateDictionary(pair.Key, pair.Value));
             return this;
@@ -68,7 +68,7 @@ namespace Cobalt.Unit
         public dynamic Augment(ExpandoObject obj)
         {
             obj
-                .Where(pair => !_valueStore.ContainsKey(pair.Key))
+                .Where(pair => !_facts.ContainsKey(pair.Key))
                 .ToList()
                 .ForEach(pair => UpdateDictionary(pair.Key, pair.Value));
             return this;
@@ -76,29 +76,29 @@ namespace Cobalt.Unit
 
         public T ValueOrDefault<T>(string propertyName, T defaultValue)
         {
-            return _valueStore.ContainsKey(propertyName)
-                ? (T) _valueStore[propertyName]
+            return _facts.ContainsKey(propertyName)
+                ? (T) _facts[propertyName]
                 : defaultValue;
         }
 
 
         public bool HasProperty(string name)
         {
-            return _valueStore.ContainsKey(name);
+            return _facts.ContainsKey(name);
         }
 
 
         public override string ToString()
         {
-            return string.Join(", ", _valueStore.Select(pair => pair.Key + " = " + pair.Value ?? "(null)").ToArray());
+            return string.Join(", ", _facts.Select(pair => pair.Key + " = " + pair.Value ?? "(null)").ToArray());
         }
 
         private void UpdateDictionary(string name, object value)
         {
-            if (_valueStore.ContainsKey(name))
-                _valueStore[name] = value;
+            if (_facts.ContainsKey(name))
+                _facts[name] = value;
             else
-                _valueStore.Add(name, value);
+                _facts.Add(name, value);
         }
 
         public dynamic ToDynamic()
