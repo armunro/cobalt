@@ -1,18 +1,15 @@
-﻿using System.Dynamic;
-using System.Threading.Tasks;
-using Cobalt;
-using Cobalt.Channel.Delimited.Input;
+﻿using System.Threading.Tasks;
 using Cobalt.Pipeline.Channel.Local;
 using Cobalt.Pipeline.Operation;
 using Cobalt.Unit;
 
-namespace Cobalt64
+namespace Cobalt.Console
 {
     internal static class Program
     {
-        private static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            // CobaltUnits are compatable with EnxpandoObjects and dynamics 
+            // CobaltUnits are compatible with ExpandoObjects and dynamics 
             dynamic first = new CobaltUnit();
             first.PropertyA = "Alphabet";
             first.PropertyB = "Baseball";
@@ -31,13 +28,11 @@ namespace Cobalt64
             var pipe = Cblt.Pipeline
                 .Channel(inputChannel)
                 .Stage(builder =>
-                        builder
-                            .Op(new FilterStep(unit => unit.PropertyA.ToString().StartsWith("A")))
-                            .Op(new FilterStep(unit => unit.PropertyB.ToString().StartsWith("B"))));
+                    builder
+                        .Op(new FilterStep(unit => unit.PropertyA.ToString().StartsWith("A")))
+                        .Op(new FilterStep(unit => unit.PropertyB.ToString().StartsWith("B"))));
             
             await pipe.ExecuteAsync();
-            
-            
         }
     }
 }
