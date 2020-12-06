@@ -71,6 +71,10 @@
     <Compile Include="Pipeline\CobaltPipeline.cs" />
     <Compile Include="Pipeline\PipelineInput.cs" />
     <Compile Include="Pipeline\PipelineOutput.cs" />
+    <Compile Include="Pipeline\Steps\Interaction\IStepBehavior.cs" />
+    <Compile Include="Pipeline\Steps\Interaction\Local\CreateBehavior.cs" />
+    <Compile Include="Pipeline\Steps\Interaction\Local\DestroyBehavior.cs" />
+    <Compile Include="Pipeline\Steps\Interaction\Local\ModifyBehavior.cs" />
     <Compile Include="Pipeline\Steps\FilterStep.cs" />
     <Compile Include="Pipeline\Channel\InputChannel.cs" />
     <Compile Include="Pipeline\Stages\CobaltStage.cs" />
@@ -87,7 +91,7 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pipeline\Rules" />
+    <Folder Include="Pipeline\Steps\Action" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
