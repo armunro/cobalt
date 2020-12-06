@@ -29,8 +29,8 @@ namespace Cobalt.Console
                 .Channel(inputChannel)
                 .Stage(builder =>
                     builder
-                        .Op(new FilterStep(unit => unit.PropertyA.ToString().StartsWith("A")))
-                        .Op(new FilterStep(unit => unit.PropertyB.ToString().StartsWith("B"))));
+                        .Op(new FilterStep(unit => unit.PropertyA.StartsWith("A")))
+                        .Op(new FilterStep(unit => unit.PropertyB.StartsWith("B"))));
             
             await pipe.ExecuteAsync();
         }
