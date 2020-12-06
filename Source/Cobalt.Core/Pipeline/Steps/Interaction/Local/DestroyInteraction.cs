@@ -1,6 +1,6 @@
 ﻿namespace Cobalt.Pipeline.Operation.Behavior
 {
-    public class CreateBehavior : IStepBehavior
+    public class DestroyInteraction : IStepInteraction
     {
         
     }

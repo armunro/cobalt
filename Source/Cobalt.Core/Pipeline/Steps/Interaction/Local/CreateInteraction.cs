@@ -1,6 +1,6 @@
 ﻿namespace Cobalt.Pipeline.Operation.Behavior
 {
-    public interface IStepBehavior
+    public class CreateInteraction : IStepInteraction
     {
         
     }

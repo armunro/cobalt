@@ -71,10 +71,10 @@
     <Compile Include="Pipeline\CobaltPipeline.cs" />
     <Compile Include="Pipeline\PipelineInput.cs" />
     <Compile Include="Pipeline\PipelineOutput.cs" />
-    <Compile Include="Pipeline\Steps\Interaction\IStepBehavior.cs" />
-    <Compile Include="Pipeline\Steps\Interaction\Local\CreateBehavior.cs" />
-    <Compile Include="Pipeline\Steps\Interaction\Local\DestroyBehavior.cs" />
-    <Compile Include="Pipeline\Steps\Interaction\Local\ModifyBehavior.cs" />
+    <Compile Include="Pipeline\Steps\Interaction\IStepInteraction.cs" />
+    <Compile Include="Pipeline\Steps\Interaction\Local\CreateInteraction.cs" />
+    <Compile Include="Pipeline\Steps\Interaction\Local\DestroyInteraction.cs" />
+    <Compile Include="Pipeline\Steps\Interaction\Local\ModifyInteraction.cs" />
     <Compile Include="Pipeline\Steps\FilterStep.cs" />
     <Compile Include="Pipeline\Channel\InputChannel.cs" />
     <Compile Include="Pipeline\Stages\CobaltStage.cs" />
