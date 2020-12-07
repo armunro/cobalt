@@ -6,6 +6,7 @@ namespace Cobalt.Pipeline.Steps
     {
         private IStepInteraction _interaction;
         private StepTarget _targetSelector;
+        
         public CobaltStep()
         {
             

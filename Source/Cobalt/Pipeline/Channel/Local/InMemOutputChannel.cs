@@ -6,9 +6,25 @@ namespace Cobalt.Pipeline.Channel.Local
 {
     public class InMemOutputChannel : OutputChannel
     {
-        public override Task WriteDataAsync(IEnumerable<CobaltUnit> units)
+        private readonly List<CobaltUnit> _units;
+
+        public InMemOutputChannel()
         {
-            throw new System.NotImplementedException();
+            _units = new List<CobaltUnit>();
+        }
+
+        public List<CobaltUnit> Units
+        {
+            get => _units;
+        }
+
+        public override async Task OutputDataAsync(IEnumerable<CobaltUnit> units)
+        {
+            foreach (CobaltUnit unit in units)
+            {
+                _units.Add(unit);
+            }
+            
         }
     }
 }

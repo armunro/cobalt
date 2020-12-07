@@ -8,9 +8,15 @@ namespace Cobalt.Pipeline.Stages
         public List<CobaltStep> Steps { get; }
 
         // [ctor]
+        public CobaltStage(List<CobaltStep> steps)
+        {
+            Steps = steps;
+        }
+        
+        
         public CobaltStage()
         {
-            Steps = new List<CobaltStep>();
+           Steps = new List<CobaltStep>();
         }
     }
 }

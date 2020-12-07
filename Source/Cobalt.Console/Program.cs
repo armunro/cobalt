@@ -20,17 +20,16 @@ namespace Cobalt.Console
             second.PropertyC = "Cat";
 
             InMemInputChannel inputChannel = new InMemInputChannel(first, second);
+            InMemOutputChannel outputChannel = new InMemOutputChannel();
       
             var pipeline = Cblt.Pipeline
                 .In(inputChannel)
                 .Stage("Filter-1",
                     stage =>
                     {
-                        stage.Step(new FilterStep(unit =>
-                        {
-                            return unit.PropertyA.StartsWith("A") || unit.PropertyA.StartsWith("B");
-                        }));
-                    });
+                        stage.Step(new FilterStep(unit => unit.PropertyA.StartsWith("A") || unit.PropertyA.StartsWith("B")));
+                    })
+                .Out(outputChannel);
 
             await pipeline.ExecuteAsync();
         }

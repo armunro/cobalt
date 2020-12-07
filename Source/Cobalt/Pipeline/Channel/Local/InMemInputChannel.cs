@@ -6,33 +6,33 @@ namespace Cobalt.Pipeline.Channel.Local
 {
     public class InMemInputChannel : InputChannel
     {
-        private readonly List<CobaltUnit> _items;
+        private readonly List<CobaltUnit> _units;
 
         public InMemInputChannel()
         {
-            _items = new List<CobaltUnit>();
+            _units = new List<CobaltUnit>();
         }
         
         public InMemInputChannel(params CobaltUnit[] units)
         {
-            _items = new List<CobaltUnit>(units);
+            _units = new List<CobaltUnit>(units);
         }
 
 
         public void AddUnit(CobaltUnit unit)
         {
-            _items.Add(unit);
+            _units.Add(unit);
         }
 
         public void AddUnits(params CobaltUnit[] units)
         {
-            _items.AddRange(units);
+            _units.AddRange(units);
         }
 
 
-        public override Task<IEnumerable<CobaltUnit>> GetDataAsync()
+        public override Task<IEnumerable<CobaltUnit>> InputDataAsync()
         {
-            return Task.FromResult((IEnumerable<CobaltUnit>) _items);
+            return Task.FromResult((IEnumerable<CobaltUnit>) _units);
         }
     }
 }

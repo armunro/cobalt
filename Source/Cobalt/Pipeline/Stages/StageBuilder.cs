@@ -7,12 +7,12 @@ namespace Cobalt.Pipeline.Stages
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        private List<CobaltStep> Operations { get; set; }
+        private List<CobaltStep> Steps { get; set; }
 
         // [ctor]
         public StageBuilder()
         {
-            Operations = new List<CobaltStep>();
+            Steps = new List<CobaltStep>();
         }
 
        
@@ -21,12 +21,14 @@ namespace Cobalt.Pipeline.Stages
 
         public StageBuilder Step(CobaltStep step)
         {
-            Operations.Add(step);
+            Steps.Add(step);
             return this;
         }
 
         public CobaltStage BuildStage()
         {
+            CobaltStage newStage = new CobaltStage(Steps);
+        
             return new CobaltStage();
         }
     }
