@@ -26,58 +26,47 @@ namespace Cobalt.Pipeline
 
         public async Task ExecuteAsync()
         {
-            HashSet<CobaltUnit> returnSet = new HashSet<CobaltUnit>();
-            List<IEnumerable<CobaltUnit>> inputUnitSets = new List<IEnumerable<CobaltUnit>>();
-            List<IEnumerable<CobaltUnit>> outputUnitSets = new List<IEnumerable<CobaltUnit>>();
+            var returnSet = new HashSet<CobaltUnit>();
+            var inputUnitSets = new List<IEnumerable<CobaltUnit>>();
+            var outputUnitSets = new List<IEnumerable<CobaltUnit>>();
 
-            foreach (var channel in Inputs)
-            {
-                inputUnitSets.Add(await channel.InputUnitsAsync());
-            }
+            Inputs.ForEach(async x => inputUnitSets.Add(await x.InputUnitsAsync()));
+
 
             foreach (var inputUnitSet in inputUnitSets)
             {
-                List<CobaltUnit> newUnits = new List<CobaltUnit>();
-                foreach (CobaltUnit unit in inputUnitSet)
+                var newUnits = new List<CobaltUnit>();
+                foreach (var unit in inputUnitSet)
                 {
-                    foreach (var stage in Stages)
-                    {
-                        foreach (var step in stage.Steps)
-                        {
-                            step.ExecuteStep(unit);
-                        }
-                    }
+                    foreach (var stage in Stages) 
+                        stage.Steps.ForEach(step => step.ExecuteStep(unit));
                     newUnits.Add(unit);
                 }
-                outputUnitSets.Add( newUnits);
+                outputUnitSets.Add(newUnits);
             }
 
-            foreach (var channel in Outputs)
-            {
-                foreach (var outputUnitSet in outputUnitSets)
-                {
-                    channel.OutputUnitsAsync(outputUnitSet);
-                }
-            }
+            Outputs.ForEach(unitOutput =>
+                outputUnitSets.ForEach(unitSet =>
+                    unitOutput.OutputUnitsAsync(unitSet)));
         }
 
         public CobaltPipeline Stage(string name, Action<StageBuilder> stageBuilder)
         {
-            StageBuilder builder = new StageBuilder();
+            var builder = new StageBuilder();
             stageBuilder.Invoke(builder);
 
-            CobaltStage stage = builder.BuildStage();
+            var stage = builder.BuildStage();
             Stages.Add(stage);
             return this;
         }
 
         public CobaltPipeline In(UnitInput @in, string name = "default")
         {
-            Inputs.Add( @in);
+            Inputs.Add(@in);
             return this;
         }
 
-        public CobaltPipeline Out(InMemUnitOutput @out, string name = "default")
+        public CobaltPipeline Out(UnitOutput @out, string name = "default")
         {
             Outputs.Add(@out);
             return this;

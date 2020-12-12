@@ -33,7 +33,7 @@ namespace Cobalt.Pipeline.Stages
 
         public CobaltStage BuildStage()
         {
-            CobaltStage newStage = new CobaltStage(Steps);
+            var newStage = new CobaltStage(Steps);
 
             return newStage;
         }

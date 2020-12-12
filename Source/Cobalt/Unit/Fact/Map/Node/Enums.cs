@@ -13,7 +13,7 @@ namespace Cobalt.Unit.Fact.Map.Node
     {
         Equal, 
         Collide, 
-        Differ
+        Different
     }
     
     public enum FactNodeType

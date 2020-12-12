@@ -7,36 +7,36 @@ using Cobalt.Unit.Fact.Map.Node;
 namespace Cobalt.Unit.Fact.Map
 {
     [Serializable]
-    public abstract  class FactMap<V> : IEnumerable<KeyValuePair<FactName, V>>
+    public abstract class FactMap : IEnumerable<KeyValuePair<string, object>>
     {
-        
-       
-        
-        internal FactMapNode<V> _rootFactNode;
-        protected int _factNodeCount;
+        protected FactMapNode RootNode { get; set; }
+        protected int NodeCount { get; set; }
 
-        [NonSerialized]
-        internal VersionID _versionID;
-        public bool IsEmpty => _factNodeCount == 0;
-        public int FactNodeCount => _factNodeCount;
-        internal FactMapNode<V> CreateValueNode(int idx, FactName key, V value, VersionID versionID = null)
+        [NonSerialized] internal FactMapVersionRef FactMapVersionRef;
+
+        public bool IsEmpty => NodeCount == 0;
+
+
+        internal FactMapNode CreateValueNode(int idx, string key, object value,
+            FactMapVersionRef factMapVersionRef = null)
         {
-            return new FactMapNode<V>(idx, key, value, versionID);
+            return new FactMapNode(idx, key, value, factMapVersionRef);
         }
 
-        internal FactMap(FactMapNode<V> rootFactNode, int factNodeCount, VersionID versionID = null)
+        internal FactMap(FactMapNode rootNode, int nodeCount, FactMapVersionRef factMapVersionRef = null)
         {
-            _rootFactNode = rootFactNode;
-            _factNodeCount = factNodeCount;
-            _versionID = versionID;
+            RootNode = rootNode;
+            NodeCount = nodeCount;
+            FactMapVersionRef = factMapVersionRef;
         }
 
-        internal FactMapNode<V> CreateCommonPath(uint h1, uint h2, int i, int shift, FactMapNode<V> node, FactName key, V value)
+        internal FactMapNode CreateCommonPath(uint h1, uint h2, int i, int shift, FactMapNode node,
+            string key, object value)
         {
-            var i1 = (int)(h1 >> shift) & 0x01f;
-            var i2 = (int)(h2 >> shift) & 0x01f;
-
-            if (i1 != i2) return node.CreateNewNodeFrom(i, key, value, i1, i2, _versionID);
+            var i1 = (int) (h1 >> shift) & 0x01f;
+            var i2 = (int) (h2 >> shift) & 0x01f;
+            if (i1 != i2)
+                return node.CreateNewNodeFrom(i, key, value, i1, i2, FactMapVersionRef);
 
             // Creating longer path
             var s = new Stack<int>();
@@ -44,42 +44,39 @@ namespace Cobalt.Unit.Fact.Map
             do
             {
                 s.Push(i1);
-
                 shift += 5;
-                i1 = (int)(h1 >> shift) & 0x01f;
-                i2 = (int)(h2 >> shift) & 0x01f;
-            }
-            while (i1 == i2);
+                i1 = (int) (h1 >> shift) & 0x01f;
+                i2 = (int) (h2 >> shift) & 0x01f;
+            } while (i1 == i2);
 
-            var newNode = node.CreateNewNodeFrom(i, key, value, i1, i2, _versionID);
+            var newNode = node.CreateNewNodeFrom(i, key, value, i1, i2, FactMapVersionRef);
 
             // Creating path
             foreach (var idx in s)
-            {
-                newNode = node.CreateReferenceNode(idx, newNode, _versionID);
-            }
+                newNode = node.CreateReferenceNode(idx, newNode, FactMapVersionRef);
 
             return newNode;
         }
 
-        internal FactMapNode<V> Adding(int shift, FactMapNode<V> node, uint hash, FactName key, V value, ref FactNodeChangeState set)
+        internal FactMapNode Adding(int shift, FactMapNode node, uint hash, string key, object value,
+            ref FactNodeChangeState set)
         {
-            var idx = (int)((hash >> shift) & 0x01f);
+            var idx = (int) ((hash >> shift) & 0x01f);
             var state = node.GetNodeStateAt(idx);
 
-            switch (state)
+            if (state == FactNodeType.Reference)
             {
-                case FactNodeType.Reference:
-                {
-                    // On position is reference node
-                    var referencedNode = node.GetReferenceAt(idx);
-                    var newNode = Adding(shift + 5, referencedNode, hash, key, value, ref set);
+                // On position is reference node
+                var referencedNode = node.GetReferenceAt(idx);
+                var newNode = Adding(shift + 5, referencedNode, hash, key, value, ref set);
 
-                    return (newNode == referencedNode || set.HasFlag(FactNodeChangeState.ChangedItem))
-                        ? node.ChangeReference(idx, newNode, _versionID): node;
-                }
-                case FactNodeType.Nil: return node.AddValueItemAt(idx, key, value, _versionID);
+                return (newNode == referencedNode || set.HasFlag(FactNodeChangeState.ChangedItem))
+                    ? node.ChangeReference(idx, newNode, FactMapVersionRef)
+                    : node;
             }
+
+            if (state == FactNodeType.Nil)
+                return node.AddValueItemAt(idx, key, value, FactMapVersionRef);
 
             // On position is value node or collision collection
             var relation = node.RelationWithNodeAt(key, idx, state);
@@ -97,63 +94,62 @@ namespace Cobalt.Unit.Fact.Map
                     return node;
                 }
 
-                return node.ChangeValue(idx, state, key, value, _versionID);
+                return node.ChangeValue(idx, state, key, value, FactMapVersionRef);
             }
+
             if (relation == FactNodeHashRelation.Collide)
             {
                 // Hash collision
                 return (state == FactNodeType.Value)
-                    ? node.CreateCollisionAt(idx, key, value, _versionID)
-                    : node.AddToCollisionsAt(idx, key, value, _versionID);
+                    ? node.CreateCollisionAt(idx, key, value, FactMapVersionRef)
+                    : node.AddToColisionAt(idx, key, value, FactMapVersionRef);
             }
 
             // Hashes are different, we create longer path
-            return node.CreateReference(idx,
-                CreateCommonPath((uint)node.GetHashCodeAt(idx, state), hash, idx, shift + 5, node, key, value),
-                state,_versionID);
-            
+            return node.CreateReference(
+                idx,
+                CreateCommonPath((uint) node.GetHashCodeAt(idx, state), hash, idx, shift + 5, node, key, value),
+                state,
+                FactMapVersionRef
+            );
         }
 
-        internal FactMapNode<V> Removing(int shift, FactMapNode<V> node, uint hash, FactName key)
+        internal FactMapNode Removing(int shift, FactMapNode node, uint hash, string key)
         {
-            var idx = (int)((hash >> shift) & 0x01f);
+            var idx = (int) ((hash >> shift) & 0x01f);
             var state = node.GetNodeStateAt(idx);
 
-            switch (state)
+            if (state == FactNodeType.Nil)
+                throw new KeyNotFoundException(
+                    "The persistent dictionary doesn't contain value associated with specified key");
+            if (state == FactNodeType.Value || state == FactNodeType.Collision)
             {
-                case FactNodeType.Nil:
-                    throw new KeyNotFoundException("The persistent dictionary doesn't contain value associated with specified key");
-                case FactNodeType.Value:
-                case FactNodeType.Collision:
-                {
-                    var relation = node.RelationWithNodeAt(key, idx, state);
-                    if (relation == FactNodeHashRelation.Equal)
-                        return node.RemoveValue(idx, state, key, _versionID);
-
-                    throw new KeyNotFoundException("The persistent dictionary doesn't contain value associated with specified key");
-                }
+                var relation = node.RelationWithNodeAt(key, idx, state);
+                if (relation == FactNodeHashRelation.Equal)
+                    return node.RemoveValue(idx, state, key, FactMapVersionRef);
+                else
+                    throw new KeyNotFoundException(
+                        "The persistent dictionary doesn't contain value associated with specified key");
             }
 
             // On position is reference node
             var newNode = Removing(shift + 5, node.GetReferenceAt(idx), hash, key);
 
-            if (newNode.CalculateValueCount() == 1 && newNode.ReferenceCount == 0)
-            {
+            if (newNode.ValueCount == 1 && newNode.ReferenceCount == 0)
                 // In recursion, we carry node to remove
-                return (node.ReferenceCount > 1 || node.CalculateValueCount() != 0)
-                    ? node.Merge(newNode, idx, _versionID)
+                return (node.ReferenceCount > 1 || node.ValueCount != 0)
+                    ? node.Merge(newNode, idx, FactMapVersionRef)
                     : newNode;
-            }
-
-            return node.ChangeReference(idx, newNode, _versionID);
+            else
+                return node.ChangeReference(idx, newNode, FactMapVersionRef);
         }
 
-        protected V GetValue(FactName key)
+        public object GetValue(string name)
         {
-            var hash = key.GetHashCode();
-            var node = _rootFactNode;
+            var hash = name.GetHashCode();
+            var node = RootNode;
 
-            for (int shift = 0; shift < 32; shift += 5)
+            for (var shift = 0; shift < 32; shift += 5)
             {
                 var idx = (hash >> shift) & 0x01f;
                 var state = node.GetNodeStateAt(idx);
@@ -161,55 +157,61 @@ namespace Cobalt.Unit.Fact.Map
                 if (state == FactNodeType.Reference) node = node.GetReferenceAt(idx);
                 else if (state == FactNodeType.Value || state == FactNodeType.Collision)
                 {
-                    return node.GetValueAt(idx, state, key);
+                    return node.GetValueAt(idx, state, name);
                 }
-                else 
-                    throw new KeyNotFoundException("The persistent dictionary doesn't contain value associated with specified key");
-
+                else
+                    throw new KeyNotFoundException(
+                        "The persistent dictionary doesn't contain value associated with specified key");
             }
 
             throw new Exception();
         }
 
-        public bool Contains(V item) => this.Any(elem => elem.Value.Equals(item));
-
-        public bool ContainsKey(FactName key)
+        public bool Contains(object item)
         {
-            if (_rootFactNode == null) return false;
-            
-            var hash = key.GetHashCode();
-            var node = _rootFactNode;
+            foreach (var elem in this)
+            {
+                if (elem.Value.Equals(item)) return true;
+            }
 
-            for (int shift = 0; shift < 32; shift += 5)
+            return false;
+        }
+
+        public bool ContainsKey(string key)
+        {
+            if (RootNode == null) return false;
+
+            var hash = key.GetHashCode();
+            var node = RootNode;
+
+            for (var shift = 0; shift < 32; shift += 5)
             {
                 var idx = (hash >> shift) & 0x01f;
                 var state = node.GetNodeStateAt(idx);
 
-                switch (state)
+                if (state == FactNodeType.Value || state == FactNodeType.Collision)
                 {
-                    case FactNodeType.Value:
-                    case FactNodeType.Collision:
-                        return node.IsKeyAt(idx, state, key);
-                    case FactNodeType.Nil:
-                        return false;
-                    case FactNodeType.Reference:
-                        break;
-                    default:
-                        node = node.GetReferenceAt(idx);
-                        break;
+                    return node.IsKeyAt(idx, state, key);
                 }
+
+                if (state == FactNodeType.Nil) return false;
+
+                node = node.GetReferenceAt(idx);
             }
 
             throw new Exception();
         }
-        
-        // IEnumerable
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        // IEnumerable
-        public IEnumerator<KeyValuePair<FactName, V>> GetEnumerator() =>
-            _rootFactNode == null ?
-                Enumerable.Empty<KeyValuePair<FactName, V>>().GetEnumerator() :
-                _rootFactNode.GetEnumerator();
+        public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
+        {
+            if (RootNode == null)
+                return Enumerable
+                    .Empty<KeyValuePair<string, object>>()
+                    .GetEnumerator();
+
+            return RootNode.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

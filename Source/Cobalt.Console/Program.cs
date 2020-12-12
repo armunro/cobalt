@@ -15,10 +15,10 @@ namespace Cobalt.Console
           
 
 
-            InMemUnitInput unitInput = new InMemUnitInput(firstUnit);
-            InMemUnitOutput unitOutput = new InMemUnitOutput();
+            var unitInput = new InMemUnitInput(firstUnit);
+            var unitOutput = new InMemUnitOutput();
             
-            foreach (CobaltUnit unit in unitInput.Units)
+            foreach (var unit in unitInput.Units)
             {
                 System.Console.WriteLine(unit.ToString());
             }
@@ -34,7 +34,7 @@ namespace Cobalt.Console
 
             await pipeline.ExecuteAsync();
 
-            foreach (CobaltUnit unit in unitOutput.Units)
+            foreach (var unit in unitOutput.Units)
             {
                 System.Console.WriteLine(unit.ToString());
             }

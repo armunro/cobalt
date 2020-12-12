@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Cobalt.Unit.Fact
+namespace Cobalt.Unit.Fact.Map
 {
-    internal static class Extensions
+    internal static class Helpers
     {
         public static IEnumerable<T> Yield<T>(T item)
         {
@@ -18,12 +18,6 @@ namespace Cobalt.Unit.Fact
             return (byte)((((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24);
         }
 
-        public static T[] Copy<T>(T[] arr)
-        {
-            return (arr == null)
-                ? null
-                : arr.ToArray();
-        }
-        
+        public static T[] Copy<T>(T[] arr) => (arr == null) ? null : arr.ToArray();
     }
 }

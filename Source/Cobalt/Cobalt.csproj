@@ -96,15 +96,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\CobaltUnit.cs" />
     <Compile Include="Unit\Fact\Extensions.cs" />
-    <Compile Include="Unit\Fact\FactName.cs" />
     <Compile Include="Unit\Fact\Map\Node\Enums.cs" />
+    <Compile Include="Unit\Fact\Map\Node\ICollisionCollection.cs" />
     <Compile Include="Unit\Fact\Map\Persistent\PersistentFactMap.cs" />
     <Compile Include="Unit\Fact\Map\Transient\TransientFactMap.cs" />
     <Compile Include="Unit\Fact\Map\FactMap.cs" />
     <Compile Include="Unit\Fact\Map\Hash\CollisionArray.cs" />
     <Compile Include="Unit\Fact\Map\Node\FactMapNode.cs" />
     <Compile Include="Unit\Fact\Map\FactMapVersionRef.cs" />
-    <Compile Include="Unit\Fact\VersionID.cs" />
+    <Compile Include="Unit\Fact\Map\_Helpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

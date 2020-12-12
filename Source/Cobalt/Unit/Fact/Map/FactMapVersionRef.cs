@@ -1,7 +1,7 @@
 ﻿using System;
 
- namespace Cobalt.Unit.Fact.Map
+namespace Cobalt.Unit.Fact
 {
     [Serializable]
-    internal class FactMapVersionRef { }
+    public class FactMapVersionRef { }
 }

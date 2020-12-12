@@ -20,7 +20,7 @@ namespace Cobalt.Pipeline.Channel.Local
 
         public override async Task OutputUnitsAsync(IEnumerable<CobaltUnit> units)
         {
-            foreach (CobaltUnit unit in units)
+            foreach (var unit in units)
             {
                 _units.Add(unit);
             }

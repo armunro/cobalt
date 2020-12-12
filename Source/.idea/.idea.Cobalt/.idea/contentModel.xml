@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Code\cobalt\Source" t="IncludeFlat">
+    <e p="C:\Source\cobalt\Source" t="IncludeFlat">
       <e p="cobalt" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Cblt.cs" t="Include" />
@@ -39,8 +39,8 @@
           <e p="CobaltUnit.cs" t="Include" />
           <e p="Fact" t="Include">
             <e p="Extensions.cs" t="Include" />
-            <e p="FactName.cs" t="Include" />
             <e p="Map" t="Include">
+              <e p="_Helpers.cs" t="Include" />
               <e p="FactMap.cs" t="Include" />
               <e p="FactMapVersionRef.cs" t="Include" />
               <e p="Hash" t="Include">
@@ -49,6 +49,7 @@
               <e p="Node" t="Include">
                 <e p="Enums.cs" t="Include" />
                 <e p="FactMapNode.cs" t="Include" />
+                <e p="ICollisionCollection.cs" t="Include" />
               </e>
               <e p="Persistent" t="Include">
                 <e p="PersistentFactMap.cs" t="Include" />
@@ -57,7 +58,6 @@
                 <e p="TransientFactMap.cs" t="Include" />
               </e>
             </e>
-            <e p="VersionID.cs" t="Include" />
           </e>
         </e>
       </e>
@@ -74,7 +74,8 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="Tools" t="Include" />
     </e>
-    <e p="C:\Users\me\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\me\.Rider2019.2\system\resharper-host\Local\Transient\ReSharperHost\v192\SolutionCaches\_Cobalt.1019143855.00" t="ExcludeRecursive" />
+    <e p="C:\Users\andrewm\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\andrewm\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Cobalt.705644737.00" t="ExcludeRecursive" />
+    <e p="C:\Users\andrewm\AppData\Roaming\JetBrains\Rider2020.2\scratches" t="IncludeRecursive" />
   </component>
 </project>

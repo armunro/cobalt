@@ -7,20 +7,20 @@ namespace Cobalt.Unit
 {
     public class CobaltUnit
     {
-        private readonly PersistentFactMap<object> _facts;
+        private readonly PersistentFactMap _facts;
 
         // [ctor]
-        public CobaltUnit() : this(PersistentFactMap<object>.Empty) { }
+        public CobaltUnit() : this(PersistentFactMap.Empty) { }
 
         // [ctor]
-        private CobaltUnit(PersistentFactMap<object> facts)
+        private CobaltUnit(PersistentFactMap facts)
         {
             _facts = facts;
         }
 
         public override string ToString()
         {
-            return String.Join(", ", _facts.Select(pair => pair.Key + " = " + pair.Value ?? "(null)").ToArray());
+            return string.Join(", ", _facts.Select(pair => pair.Key + " = " + pair.Value ?? "(null)").ToArray());
         }
 
        

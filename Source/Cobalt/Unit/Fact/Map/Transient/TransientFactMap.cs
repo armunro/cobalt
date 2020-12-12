@@ -5,71 +5,66 @@ using Cobalt.Unit.Fact.Map.Persistent;
 
 namespace Cobalt.Unit.Fact.Map.Transient
 {
-    public sealed class TransientFactMap<V> : FactMap<V>, IEnumerable<KeyValuePair<FactName, V>>
+    public sealed class TransientFactMap: FactMap, IEnumerable<KeyValuePair<string, object>>
     {
-        internal TransientFactMap(FactMapNode<V> rootFactNode, int factNodeCount)
-            : base(rootFactNode, factNodeCount, new VersionID())
+        internal TransientFactMap(FactMapNode rootNode, int nodeCount)
+            : base(rootNode, nodeCount, new FactMapVersionRef())
         {
 
         }
 
-        public PersistentFactMap<V> AsPersistent()
+        public PersistentFactMap AsPersistent()
         {
-            _versionID = null;
-            if (_factNodeCount == 0) return PersistentFactMap<V>.Empty;
-
-            return new PersistentFactMap<V>(_rootFactNode, _factNodeCount);
+            FactMapVersionRef = null;
+            if (NodeCount == 0) return PersistentFactMap.Empty;
+            return new PersistentFactMap(RootNode, NodeCount);
         }
 
         #region Main functionality
-        public void Add(FactName key, V value)
+        public void Add(string factName, object factValue)
         {
-            if (_versionID == null)
+            if (FactMapVersionRef == null)
                 throw new NotSupportedException("Transient dictionary cannot be modified after call AsPersistent() method");
 
             var set = FactNodeChangeState.ChangedItem | FactNodeChangeState.NewItem;
 
-            if (_factNodeCount == 0)
+            if (IsEmpty)
             {
-                var idx = key.GetHashCode() & 0x01f;
-
-                _rootFactNode = CreateValueNode(idx, key, value, _versionID);
+                var idx = factName.GetHashCode() & 0x01f;
+                RootNode = CreateValueNode(idx, factName, factValue, FactMapVersionRef);
             }
             else
-            {
-                _rootFactNode = Adding(0, _rootFactNode, (UInt32)key.GetHashCode(), key, value, ref set);
-            }
+                RootNode = Adding(0, RootNode, (uint) factName.GetHashCode(), factName, factValue, ref set);
 
-            if (set.HasFlag(FactNodeChangeState.NewItem)) _factNodeCount++;
+            if (set.HasFlag(FactNodeChangeState.NewItem)) 
+                NodeCount++;
         }
 
-        public void Add<T>(IEnumerable<T> e, Func<T, FactName> key, Func<T, V> val)
+        public void Add<T>(IEnumerable<T> e, Func<T, string> key, Func<T, object> val)
         {
-            foreach (var item in e)
-            {
+            foreach (var item in e) 
                 Add(key(item), val(item));
-            }
         }
 
-        public void Remove(FactName key)
+        public void Remove(string key)
         {
-            if (_versionID == null)
+            if (FactMapVersionRef == null)
                 throw new NotSupportedException("Transient dictionary cannot be modified after call AsPersistent() method");
 
-            if (_factNodeCount == 0) 
+            if (NodeCount == 0) 
                 throw new KeyNotFoundException("The persistent dictionary doesn't contain value associated with specified key");
 
-            var newRoot = Removing(0, _rootFactNode, (UInt32)key.GetHashCode(), key);
-            _factNodeCount--;
+            var newRoot = Removing(0, RootNode, (uint)key.GetHashCode(), key);
+            NodeCount--;
 
-            if (newRoot.CalculateValueCount() == 1) newRoot = newRoot.MakeRoot(_versionID);
-            else if (newRoot.CalculateValueCount() == 0 && newRoot.ReferenceCount == 0) newRoot = null;
+            if (newRoot.ValueCount == 1) newRoot = newRoot.MakeRoot(FactMapVersionRef);
+            else if (newRoot.ValueCount == 0 && newRoot.ReferenceCount == 0) newRoot = null;
 
-            _rootFactNode = newRoot;
+            RootNode = newRoot;
         }
         #endregion
 
-        public V this[FactName i]
+        public object this[string i]
         {
             get => GetValue(i);
             set => Add(i, value);
