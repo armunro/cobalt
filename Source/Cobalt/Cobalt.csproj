@@ -45,8 +45,25 @@
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Collections.Immutable.5.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>True</Private>
@@ -65,27 +82,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cblt.cs" />
-    <Compile Include="Pipeline\Channel\Local\InMemOutputChannel.cs" />
-    <Compile Include="Pipeline\Channel\Local\InMemInputChannel.cs" />
-    <Compile Include="Pipeline\Channel\OutputChannel.cs" />
+    <Compile Include="Pipeline\Channel\Local\InMemUnitOutput.cs" />
+    <Compile Include="Pipeline\Channel\Local\InMemUnitInput.cs" />
+    <Compile Include="Pipeline\Channel\UnitOutput.cs" />
     <Compile Include="Pipeline\CobaltPipeline.cs" />
-    <Compile Include="Pipeline\PipelineInput.cs" />
-    <Compile Include="Pipeline\PipelineOutput.cs" />
-    <Compile Include="Pipeline\Rules\CobaltRule.cs" />
-    <Compile Include="Pipeline\Steps\Action\IStepAction.cs" />
-    <Compile Include="Pipeline\Steps\FilterStep.cs" />
-    <Compile Include="Pipeline\Steps\Interaction\IStepInteraction.cs" />
-    <Compile Include="Pipeline\Steps\Interaction\Local\CreateInteraction.cs" />
-    <Compile Include="Pipeline\Steps\Interaction\Local\DestroyInteraction.cs" />
-    <Compile Include="Pipeline\Steps\Interaction\Local\ModifyInteraction.cs" />
-    <Compile Include="Pipeline\Channel\InputChannel.cs" />
+    <Compile Include="Pipeline\Channel\UnitInput.cs" />
     <Compile Include="Pipeline\Stages\CobaltStage.cs" />
     <Compile Include="Pipeline\Steps\CobaltStep.cs" />
     <Compile Include="Pipeline\Stages\StageBuilder.cs" />
-    <Compile Include="Pipeline\Steps\StepTarget.cs" />
+    <Compile Include="Pipeline\Steps\InlineStep.cs" />
+    <Compile Include="Pipeline\Steps\Local\ChangeStep.cs" />
+    <Compile Include="Pipeline\Steps\Local\MyStep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unit\CobaltUnitSet.cs" />
     <Compile Include="Unit\CobaltUnit.cs" />
+    <Compile Include="Unit\Fact\Extensions.cs" />
+    <Compile Include="Unit\Fact\FactName.cs" />
+    <Compile Include="Unit\Fact\Map\Node\Enums.cs" />
+    <Compile Include="Unit\Fact\Map\Persistent\PersistentFactMap.cs" />
+    <Compile Include="Unit\Fact\Map\Transient\TransientFactMap.cs" />
+    <Compile Include="Unit\Fact\Map\FactMap.cs" />
+    <Compile Include="Unit\Fact\Map\Hash\CollisionArray.cs" />
+    <Compile Include="Unit\Fact\Map\Node\FactMapNode.cs" />
+    <Compile Include="Unit\Fact\Map\FactMapVersionRef.cs" />
+    <Compile Include="Unit\Fact\VersionID.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

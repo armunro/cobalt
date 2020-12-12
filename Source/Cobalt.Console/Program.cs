@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Cobalt.Pipeline.Channel.Local;
-using Cobalt.Pipeline.Steps.Interaction.Local;
+using Cobalt.Pipeline.Steps;
+using Cobalt.Pipeline.Steps.Local;
 using Cobalt.Unit;
+
 
 namespace Cobalt.Console
 {
@@ -9,29 +11,33 @@ namespace Cobalt.Console
     {
         public static async Task Main(string[] args)
         {
-            // CobaltUnits are dynamic objects with extra features
-            dynamic first = new CobaltUnit();
-            first.PropertyA = "Alphabet";
-            first.PropertyB = "Baseball";
+            var firstUnit = new CobaltUnit();
+          
 
-            dynamic second = new CobaltUnit();
-            second.PropertyA = "Apple";
-            second.PropertyB = "Dog";
-            second.PropertyC = "Cat";
 
-            InMemInputChannel inputChannel = new InMemInputChannel(first, second);
-            InMemOutputChannel outputChannel = new InMemOutputChannel();
-      
+            InMemUnitInput unitInput = new InMemUnitInput(firstUnit);
+            InMemUnitOutput unitOutput = new InMemUnitOutput();
+            
+            foreach (CobaltUnit unit in unitInput.Units)
+            {
+                System.Console.WriteLine(unit.ToString());
+            }
+
             var pipeline = Cblt.Pipeline
-                .In(inputChannel)
-                .Stage("Filter-1",
-                    stage =>
-                    {
-                        stage.Step(new FilterStep(unit => unit.PropertyA.StartsWith("A") || unit.PropertyA.StartsWith("B")));
-                    })
-                .Out(outputChannel);
+                .In(unitInput)
+                .Stage("Filter-1", stage =>
+                {
+                    stage
+                        .Step(new MyStep());
+                })
+                .Out(unitOutput);
 
             await pipeline.ExecuteAsync();
+
+            foreach (CobaltUnit unit in unitOutput.Units)
+            {
+                System.Console.WriteLine(unit.ToString());
+            }
         }
     }
 }

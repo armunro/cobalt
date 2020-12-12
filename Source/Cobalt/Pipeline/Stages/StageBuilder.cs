@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Cobalt.Pipeline.Steps;
+using Cobalt.Unit;
 
 namespace Cobalt.Pipeline.Stages
 {
@@ -15,9 +17,6 @@ namespace Cobalt.Pipeline.Stages
             Steps = new List<CobaltStep>();
         }
 
-       
-
-
 
         public StageBuilder Step(CobaltStep step)
         {
@@ -25,11 +24,18 @@ namespace Cobalt.Pipeline.Stages
             return this;
         }
 
+        public StageBuilder Step(Func<CobaltUnit, CobaltUnit> inlineStep)
+        {
+            Steps.Add(new InlineStep(inlineStep));
+            return this;
+        }
+
+
         public CobaltStage BuildStage()
         {
             CobaltStage newStage = new CobaltStage(Steps);
-        
-            return new CobaltStage();
+
+            return newStage;
         }
     }
 }

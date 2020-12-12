@@ -3,7 +3,7 @@ using Cobalt.Pipeline.Steps;
 
 namespace Cobalt.Pipeline.Stages
 {
-    public  class CobaltStage
+    public class CobaltStage
     {
         public List<CobaltStep> Steps { get; }
 
@@ -12,11 +12,11 @@ namespace Cobalt.Pipeline.Stages
         {
             Steps = steps;
         }
-        
-        
+
+
         public CobaltStage()
         {
-           Steps = new List<CobaltStep>();
+            Steps = new List<CobaltStep>();
         }
     }
 }

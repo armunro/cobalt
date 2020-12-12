@@ -4,11 +4,11 @@ using Cobalt.Unit;
 
 namespace Cobalt.Pipeline.Channel.Local
 {
-    public class InMemOutputChannel : OutputChannel
+    public class InMemUnitOutput : UnitOutput
     {
         private readonly List<CobaltUnit> _units;
 
-        public InMemOutputChannel()
+        public InMemUnitOutput()
         {
             _units = new List<CobaltUnit>();
         }
@@ -18,7 +18,7 @@ namespace Cobalt.Pipeline.Channel.Local
             get => _units;
         }
 
-        public override async Task OutputDataAsync(IEnumerable<CobaltUnit> units)
+        public override async Task OutputUnitsAsync(IEnumerable<CobaltUnit> units)
         {
             foreach (CobaltUnit unit in units)
             {

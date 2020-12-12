@@ -4,8 +4,8 @@ using Cobalt.Unit;
 
 namespace Cobalt.Pipeline.Channel
 {
-    public abstract class OutputChannel
+    public abstract class UnitInput
     {
-        public abstract Task OutputDataAsync(IEnumerable<CobaltUnit> units);
+        public abstract Task<IEnumerable<CobaltUnit>> InputUnitsAsync();
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Code\cobalt\Source" t="IncludeFlat">
@@ -10,38 +10,25 @@
         <e p="packages.config" t="Include" />
         <e p="Pipeline" t="Include">
           <e p="Channel" t="Include">
-            <e p="InputChannel.cs" t="Include" />
             <e p="Local" t="Include">
-              <e p="InMemInputChannel.cs" t="Include" />
-              <e p="InMemOutputChannel.cs" t="Include" />
+              <e p="InMemUnitInput.cs" t="Include" />
+              <e p="InMemUnitOutput.cs" t="Include" />
             </e>
-            <e p="OutputChannel.cs" t="Include" />
+            <e p="UnitInput.cs" t="Include" />
+            <e p="UnitOutput.cs" t="Include" />
           </e>
           <e p="CobaltPipeline.cs" t="Include" />
-          <e p="PipelineInput.cs" t="Include" />
-          <e p="PipelineOutput.cs" t="Include" />
-          <e p="Rules" t="Include">
-            <e p="CobaltRule.cs" t="Include" />
-          </e>
           <e p="Stages" t="Include">
             <e p="CobaltStage.cs" t="Include" />
             <e p="StageBuilder.cs" t="Include" />
           </e>
           <e p="Steps" t="Include">
-            <e p="Action" t="Include">
-              <e p="IStepAction.cs" t="Include" />
-            </e>
             <e p="CobaltStep.cs" t="Include" />
-            <e p="FilterStep.cs" t="Include" />
-            <e p="Interaction" t="Include">
-              <e p="IStepInteraction.cs" t="Include" />
-              <e p="Local" t="Include">
-                <e p="CreateInteraction.cs" t="Include" />
-                <e p="DestroyInteraction.cs" t="Include" />
-                <e p="ModifyInteraction.cs" t="Include" />
-              </e>
+            <e p="InlineStep.cs" t="Include" />
+            <e p="Local" t="Include">
+              <e p="ChangeStep.cs" t="Include" />
+              <e p="MyStep.cs" t="Include" />
             </e>
-            <e p="StepTarget.cs" t="Include" />
           </e>
         </e>
         <e p="Properties" t="Include">
@@ -50,7 +37,28 @@
         <e p="README.md" t="Include" />
         <e p="Unit" t="Include">
           <e p="CobaltUnit.cs" t="Include" />
-          <e p="CobaltUnitSet.cs" t="Include" />
+          <e p="Fact" t="Include">
+            <e p="Extensions.cs" t="Include" />
+            <e p="FactName.cs" t="Include" />
+            <e p="Map" t="Include">
+              <e p="FactMap.cs" t="Include" />
+              <e p="FactMapVersionRef.cs" t="Include" />
+              <e p="Hash" t="Include">
+                <e p="CollisionArray.cs" t="Include" />
+              </e>
+              <e p="Node" t="Include">
+                <e p="Enums.cs" t="Include" />
+                <e p="FactMapNode.cs" t="Include" />
+              </e>
+              <e p="Persistent" t="Include">
+                <e p="PersistentFactMap.cs" t="Include" />
+              </e>
+              <e p="Transient" t="Include">
+                <e p="TransientFactMap.cs" t="Include" />
+              </e>
+            </e>
+            <e p="VersionID.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Cobalt.Console" t="IncludeRecursive">
