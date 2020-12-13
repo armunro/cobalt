@@ -7,15 +7,14 @@
         <e p="Cb.cs" t="Include" />
         <e p="Cobalt.csproj" t="IncludeRecursive" />
         <e p="Interaction" t="Include">
-          <e p="Fact" t="Include">
-            <e p="ChangeFactInteraction.cs" t="Include" />
-            <e p="CreateFactInteraction.cs" t="Include" />
-            <e p="DestroyFactInteraction.cs" t="Include" />
-            <e p="FactInteraction.cs" t="Include" />
-          </e>
           <e p="Interaction.cs" t="Include" />
           <e p="Set" t="Include" />
-          <e p="Unit" t="Include" />
+          <e p="Unit" t="Include">
+            <e p="ChangeUnitInteraction.cs" t="Include" />
+            <e p="CreateUnitInteraction.cs" t="Include" />
+            <e p="DestroyUnitInteraction.cs" t="Include" />
+            <e p="UnitInteraction.cs" t="Include" />
+          </e>
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />

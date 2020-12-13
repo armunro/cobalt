@@ -82,11 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cb.cs" />
-    <Compile Include="Interaction\Fact\ChangeFactInteraction.cs" />
-    <Compile Include="Interaction\Fact\CreateFactInteraction.cs" />
-    <Compile Include="Interaction\Fact\FactInteraction.cs" />
-    <Compile Include="Interaction\Fact\DestroyFactInteraction.cs" />
     <Compile Include="Interaction\Interaction.cs" />
+    <Compile Include="Interaction\Unit\ChangeUnitInteraction.cs" />
+    <Compile Include="Interaction\Unit\CreateUnitInteraction.cs" />
+    <Compile Include="Interaction\Unit\DestroyUnitInteraction.cs" />
+    <Compile Include="Interaction\Unit\UnitInteraction.cs" />
     <Compile Include="Pipeline\Channel\Local\InMemUnitOutput.cs" />
     <Compile Include="Pipeline\Channel\Local\InMemUnitInput.cs" />
     <Compile Include="Pipeline\Channel\UnitOutput.cs" />
@@ -115,7 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interaction\Set" />
-    <Folder Include="Interaction\Unit" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
