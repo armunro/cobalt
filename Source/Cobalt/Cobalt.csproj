@@ -81,7 +81,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cblt.cs" />
+    <Compile Include="Cb.cs" />
+    <Compile Include="Interaction\Fact\ChangeFactInteraction.cs" />
+    <Compile Include="Interaction\Fact\CreateFactInteraction.cs" />
+    <Compile Include="Interaction\Fact\FactInteraction.cs" />
+    <Compile Include="Interaction\Fact\DestroyFactInteraction.cs" />
+    <Compile Include="Interaction\Interaction.cs" />
     <Compile Include="Pipeline\Channel\Local\InMemUnitOutput.cs" />
     <Compile Include="Pipeline\Channel\Local\InMemUnitInput.cs" />
     <Compile Include="Pipeline\Channel\UnitOutput.cs" />
@@ -90,27 +95,27 @@
     <Compile Include="Pipeline\Stages\CobaltStage.cs" />
     <Compile Include="Pipeline\Steps\CobaltStep.cs" />
     <Compile Include="Pipeline\Stages\StageBuilder.cs" />
-    <Compile Include="Pipeline\Steps\InlineStep.cs" />
-    <Compile Include="Pipeline\Steps\Local\ChangeStep.cs" />
     <Compile Include="Pipeline\Steps\Local\MyStep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unit\CobaltUnit.cs" />
-    <Compile Include="Unit\Fact\Extensions.cs" />
+    <Compile Include="Unit\Unit.cs" />
+    <Compile Include="Unit\Fact\Helpers.cs" />
+    <Compile Include="Unit\Fact\Map\Node\FactHashCollisionArray.cs" />
     <Compile Include="Unit\Fact\Map\Node\Enums.cs" />
-    <Compile Include="Unit\Fact\Map\Node\ICollisionCollection.cs" />
     <Compile Include="Unit\Fact\Map\Persistent\PersistentFactMap.cs" />
     <Compile Include="Unit\Fact\Map\Transient\TransientFactMap.cs" />
     <Compile Include="Unit\Fact\Map\FactMap.cs" />
-    <Compile Include="Unit\Fact\Map\Hash\CollisionArray.cs" />
     <Compile Include="Unit\Fact\Map\Node\FactMapNode.cs" />
     <Compile Include="Unit\Fact\Map\FactMapVersionRef.cs" />
-    <Compile Include="Unit\Fact\Map\_Helpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interaction\Set" />
+    <Folder Include="Interaction\Unit" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

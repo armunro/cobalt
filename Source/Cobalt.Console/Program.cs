@@ -11,33 +11,28 @@ namespace Cobalt.Console
     {
         public static async Task Main(string[] args)
         {
-            var firstUnit = new CobaltUnit();
-          
-
-
-            var unitInput = new InMemUnitInput(firstUnit);
-            var unitOutput = new InMemUnitOutput();
-            
-            foreach (var unit in unitInput.Units)
+            var unitsIn = new InMemUnitInput(Cb.Make.Unit.FromObject(new
             {
-                System.Console.WriteLine(unit.ToString());
-            }
-
-            var pipeline = Cblt.Pipeline
-                .In(unitInput)
-                .Stage("Filter-1", stage =>
+                Me = new
                 {
-                    stage
-                        .Step(new MyStep());
-                })
-                .Out(unitOutput);
+                    FirstName = "Andrew",
+                    LastName = "Munro"
+                }
+            }));
+            var unitsOut = new InMemUnitOutput();
+
+            System.Console.WriteLine("-- INPUTS");
+            unitsIn.Units.ForEach(x => System.Console.WriteLine(x.ToString()));
+
+            var pipeline = Cb.Pipeline
+                .In(unitsIn)
+                .Stage("Filter-1", stage => { stage.Step(new MyStep()); })
+                .Out(unitsOut);
 
             await pipeline.ExecuteAsync();
 
-            foreach (var unit in unitOutput.Units)
-            {
-                System.Console.WriteLine(unit.ToString());
-            }
+            System.Console.WriteLine("-- OUTPUTS");
+            unitsOut.Units.ForEach(x => System.Console.WriteLine(x.ToString()));
         }
     }
 }

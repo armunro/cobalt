@@ -107,10 +107,8 @@ namespace Cobalt.Unit.Fact.Map
 
             // Hashes are different, we create longer path
             return node.CreateReference(
-                idx,
-                CreateCommonPath((uint) node.GetHashCodeAt(idx, state), hash, idx, shift + 5, node, key, value),
-                state,
-                FactMapVersionRef
+                idx, CreateCommonPath((uint) node.GetHashCodeAt(idx, state), hash, idx, shift + 5, node, key, value),
+                state, FactMapVersionRef
             );
         }
 
@@ -156,9 +154,7 @@ namespace Cobalt.Unit.Fact.Map
 
                 if (state == FactNodeType.Reference) node = node.GetReferenceAt(idx);
                 else if (state == FactNodeType.Value || state == FactNodeType.Collision)
-                {
                     return node.GetValueAt(idx, state, name);
-                }
                 else
                     throw new KeyNotFoundException(
                         "The persistent dictionary doesn't contain value associated with specified key");
@@ -170,9 +166,8 @@ namespace Cobalt.Unit.Fact.Map
         public bool Contains(object item)
         {
             foreach (var elem in this)
-            {
-                if (elem.Value.Equals(item)) return true;
-            }
+                if (elem.Value.Equals(item))
+                    return true;
 
             return false;
         }

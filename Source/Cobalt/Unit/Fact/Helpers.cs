@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Cobalt.Unit.Fact
 {
-    internal static class Extensions
+    internal static class Helpers
     {
         public static IEnumerable<T> Yield<T>(T item)
         {

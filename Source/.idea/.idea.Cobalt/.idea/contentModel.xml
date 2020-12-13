@@ -4,8 +4,19 @@
     <e p="C:\Source\cobalt\Source" t="IncludeFlat">
       <e p="cobalt" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Cblt.cs" t="Include" />
+        <e p="Cb.cs" t="Include" />
         <e p="Cobalt.csproj" t="IncludeRecursive" />
+        <e p="Interaction" t="Include">
+          <e p="Fact" t="Include">
+            <e p="ChangeFactInteraction.cs" t="Include" />
+            <e p="CreateFactInteraction.cs" t="Include" />
+            <e p="DestroyFactInteraction.cs" t="Include" />
+            <e p="FactInteraction.cs" t="Include" />
+          </e>
+          <e p="Interaction.cs" t="Include" />
+          <e p="Set" t="Include" />
+          <e p="Unit" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Pipeline" t="Include">
@@ -24,9 +35,7 @@
           </e>
           <e p="Steps" t="Include">
             <e p="CobaltStep.cs" t="Include" />
-            <e p="InlineStep.cs" t="Include" />
             <e p="Local" t="Include">
-              <e p="ChangeStep.cs" t="Include" />
               <e p="MyStep.cs" t="Include" />
             </e>
           </e>
@@ -36,20 +45,15 @@
         </e>
         <e p="README.md" t="Include" />
         <e p="Unit" t="Include">
-          <e p="CobaltUnit.cs" t="Include" />
           <e p="Fact" t="Include">
-            <e p="Extensions.cs" t="Include" />
+            <e p="Helpers.cs" t="Include" />
             <e p="Map" t="Include">
-              <e p="_Helpers.cs" t="Include" />
               <e p="FactMap.cs" t="Include" />
               <e p="FactMapVersionRef.cs" t="Include" />
-              <e p="Hash" t="Include">
-                <e p="CollisionArray.cs" t="Include" />
-              </e>
               <e p="Node" t="Include">
                 <e p="Enums.cs" t="Include" />
+                <e p="FactHashCollisionArray.cs" t="Include" />
                 <e p="FactMapNode.cs" t="Include" />
-                <e p="ICollisionCollection.cs" t="Include" />
               </e>
               <e p="Persistent" t="Include">
                 <e p="PersistentFactMap.cs" t="Include" />
@@ -59,6 +63,7 @@
               </e>
             </e>
           </e>
+          <e p="Unit.cs" t="Include" />
         </e>
       </e>
       <e p="Cobalt.Console" t="IncludeRecursive">

@@ -24,14 +24,7 @@ namespace Cobalt.Pipeline.Stages
             return this;
         }
 
-        public StageBuilder Step(Func<CobaltUnit, CobaltUnit> inlineStep)
-        {
-            Steps.Add(new InlineStep(inlineStep));
-            return this;
-        }
-
-
-        public CobaltStage BuildStage()
+      public CobaltStage BuildStage()
         {
             var newStage = new CobaltStage(Steps);
 
