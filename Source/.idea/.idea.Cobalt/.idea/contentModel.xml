@@ -6,37 +6,26 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Cb.cs" t="Include" />
         <e p="Cobalt.csproj" t="IncludeRecursive" />
-        <e p="Interaction" t="Include">
-          <e p="Interaction.cs" t="Include" />
-          <e p="Set" t="Include" />
-          <e p="Unit" t="Include">
-            <e p="ChangeUnitInteraction.cs" t="Include" />
-            <e p="CreateUnitInteraction.cs" t="Include" />
-            <e p="DestroyUnitInteraction.cs" t="Include" />
-            <e p="UnitInteraction.cs" t="Include" />
-          </e>
-        </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Pipeline" t="Include">
-          <e p="Channel" t="Include">
-            <e p="Local" t="Include">
-              <e p="InMemUnitInput.cs" t="Include" />
-              <e p="InMemUnitOutput.cs" t="Include" />
-            </e>
-            <e p="UnitInput.cs" t="Include" />
-            <e p="UnitOutput.cs" t="Include" />
-          </e>
           <e p="CobaltPipeline.cs" t="Include" />
-          <e p="Stages" t="Include">
-            <e p="CobaltStage.cs" t="Include" />
-            <e p="StageBuilder.cs" t="Include" />
-          </e>
-          <e p="Steps" t="Include">
-            <e p="CobaltStep.cs" t="Include" />
-            <e p="Local" t="Include">
-              <e p="MyStep.cs" t="Include" />
+          <e p="Stage" t="Include">
+            <e p="Interaction" t="Include">
+              <e p="Builder" t="Include">
+                <e p="Interactions.cs" t="Include" />
+              </e>
+              <e p="Interaction.cs" t="Include" />
+              <e p="Unit" t="Include">
+                <e p="CreateFactInteraction.cs" t="Include" />
+                <e p="CreateUnitInteraction.cs" t="Include" />
+                <e p="Resolver.cs" t="Include" />
+                <e p="UnitInteraction.cs" t="Include" />
+              </e>
             </e>
+            <e p="LoadFileStage.cs" t="Include" />
+            <e p="ParseCsvStage.cs" t="Include" />
+            <e p="Stage.cs" t="Include" />
           </e>
         </e>
         <e p="Properties" t="Include">
@@ -64,6 +53,7 @@
           </e>
           <e p="Unit.cs" t="Include" />
         </e>
+        <e p="Visual" t="Include" />
       </e>
       <e p="Cobalt.Console" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -78,8 +68,8 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="Tools" t="Include" />
     </e>
-    <e p="C:\Users\andrewm\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\andrewm\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Cobalt.705644737.00" t="ExcludeRecursive" />
-    <e p="C:\Users\andrewm\AppData\Roaming\JetBrains\Rider2020.2\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\andrewm\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\andrewm\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_Cobalt.705644737.00" t="ExcludeRecursive" />
+    <e p="C:\Users\andrewm\AppData\Roaming\JetBrains\Rider2020.3\scratches" t="IncludeRecursive" />
   </component>
 </project>

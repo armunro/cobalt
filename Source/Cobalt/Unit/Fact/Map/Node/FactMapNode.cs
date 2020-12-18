@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Cobalt.Unit.Fact.Map.Hash;
 
 namespace Cobalt.Unit.Fact.Map.Node
 {

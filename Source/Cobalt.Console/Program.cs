@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
-using Cobalt.Pipeline.Channel.Local;
-using Cobalt.Pipeline.Steps;
-using Cobalt.Pipeline.Steps.Local;
-using Cobalt.Unit;
+﻿using System.Dynamic;
+using System.IO;
+using System.Net;
+using System.Runtime.Remoting.Channels;
+using System.Threading.Tasks;
+using Cobalt.Pipeline.Stage;
+using Microsoft.SqlServer.Server;
 
 
 namespace Cobalt.Console
@@ -11,28 +13,17 @@ namespace Cobalt.Console
     {
         public static async Task Main(string[] args)
         {
-            var unitsIn = new InMemUnitInput(Cb.Make.Unit.FromObject(new
-            {
-                Me = new
+            //A unit created from a dynamic builder works as well
+            var unit = Cb.Unit();
+
+
+            var pipeline = Cb.Pipe
+                .Stage<LoadFileStage>(stg =>
                 {
-                    FirstName = "Andrew",
-                    LastName = "Munro"
-                }
-            }));
-            var unitsOut = new InMemUnitOutput();
-
-            System.Console.WriteLine("-- INPUTS");
-            unitsIn.Units.ForEach(x => System.Console.WriteLine(x.ToString()));
-
-            var pipeline = Cb.Pipeline
-                .In(unitsIn)
-                .Stage("Filter-1", stage => { stage.Step(new MyStep()); })
-                .Out(unitsOut);
-
-            await pipeline.ExecuteAsync();
-
-            System.Console.WriteLine("-- OUTPUTS");
-            unitsOut.Units.ForEach(x => System.Console.WriteLine(x.ToString()));
+                    stg.FilePath = "my.csv";
+                    stg.TargetFact = "Content";
+                })
+                .Stage<ParseCsvStage>(stg => stg.Delimiter = ",");
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using Cobalt.Pipeline;
@@ -8,28 +10,17 @@ namespace Cobalt
 {
     public class Cb
     {
-        public static CobaltPipeline Pipeline => new CobaltPipeline();
+        public static CobaltPipeline Pipe => new CobaltPipeline();
+        public static CobaltUnit Unit() => new CobaltUnit();
+        public static CobaltUnit Unit(dynamic source) => CobaltUnit.Make(AsDictionary(source));
 
-        public static Maker Make => new Maker();
-    }
-
-    public class Maker
-    {
-        public UnitMaker Unit => new UnitMaker();
-    }
-
-    public class UnitMaker
-    {
-        public CobaltUnit FromObject(object source,
-            BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
-        {
-            var objects = AsDictionary(source);
-            return CobaltUnit.Make(objects);
-        }
+      
         
-        public static IDictionary<string, object> AsDictionary(object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        private static IDictionary<string, object> AsDictionary(object source)
         {
-            return source.GetType().GetProperties(bindingAttr).ToDictionary
+            BindingFlags flags = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance;
+            
+            return source.GetType().GetProperties(flags).ToDictionary
             (
                 propInfo => propInfo.Name,
                 propInfo => propInfo.GetValue(source, null)
@@ -37,4 +28,5 @@ namespace Cobalt
 
         }
     }
+
 }
