@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt", "Cobalt\Cobalt.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{5CCE5897-E9A8-402F-9E01-6FE74A839C6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Console", "Cobalt.Console\Cobalt.Console.csproj", "{797EF938-C7A6-4F44-A93D-3A48F91D3E10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Web", "Cobalt.Web\Cobalt.Web.csproj", "{2380EC34-B40E-42EB-8CF6-E57704FA4089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,10 @@ Global
 		{9811052C-435D-4CE6-B2D2-085CAC09A7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9811052C-435D-4CE6-B2D2-085CAC09A7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9811052C-435D-4CE6-B2D2-085CAC09A7EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{797EF938-C7A6-4F44-A93D-3A48F91D3E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{797EF938-C7A6-4F44-A93D-3A48F91D3E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{797EF938-C7A6-4F44-A93D-3A48F91D3E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{797EF938-C7A6-4F44-A93D-3A48F91D3E10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2380EC34-B40E-42EB-8CF6-E57704FA4089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2380EC34-B40E-42EB-8CF6-E57704FA4089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2380EC34-B40E-42EB-8CF6-E57704FA4089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2380EC34-B40E-42EB-8CF6-E57704FA4089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -31,6 +31,5 @@ Global
 		SolutionGuid = {56EABBC8-6F27-4D5B-8702-CC25FDBBE6C4}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{797EF938-C7A6-4F44-A93D-3A48F91D3E10} = {5CCE5897-E9A8-402F-9E01-6FE74A839C6B}
 	EndGlobalSection
 EndGlobal

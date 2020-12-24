@@ -1,11 +1,17 @@
-using Cobalt.Interaction.Unit;
-using Cobalt.Unit;
+using System;
+using Cobalt.Guidance.Diagrams;
+using Cobalt.Guidance.Text.Descriptions;
+using Cobalt.Interaction;
 
-namespace Cobalt.Pipeline.Steps
+namespace Cobalt.Pipeline.Stage
 {
-    public abstract class Stage
+    public abstract class Stage : IGivesDescription<Stage>, IGivesVisual<Stage>
     {
-        private UnitInteraction _unitInteractions;
-        public abstract CobaltUnit RunStage(CobaltUnit unit);
+
+        public abstract InteractionPlan<Stage> PrepareInteractionPlan(Unit.Unit unit);
+        public abstract StageDescription Describe();
+        public Visual<Stage> Visualize() => new Visual<Stage>();
+
+       
     }
 }

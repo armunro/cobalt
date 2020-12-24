@@ -1,29 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Cobalt.Interaction.Builder;
 using Cobalt.Interaction.Unit;
-using Cobalt.Unit.Fact;
 using Cobalt.Unit.Fact.Map.Persistent;
 
 namespace Cobalt.Unit
 {
-    public class CobaltUnit
+    public class Unit : IInteractionReciever<NewFactInteraction>
     {
-        public PersistentFactMap Facts { get; } 
+        public PersistentFactMap Facts { get; set; }
         public UnitQualities Qualities { get; set; } = new UnitQualities();
         public List<UnitInteraction> Interactions { get; set; } = new List<UnitInteraction>();
 
         // [ctor]
-        internal CobaltUnit() : this(PersistentFactMap.Empty)
+        internal Unit() : this(PersistentFactMap.Empty)
         {
             
         }
 
         // [ctor]
-        private CobaltUnit(PersistentFactMap facts)
+        private Unit(PersistentFactMap facts)
         {
             Facts = facts;
+        }
+
+
+        public void ReceiveInteraction(NewFactInteraction newFact)
+        {
+           Facts = Facts.Add(newFact.FactName, newFact.FactValue);
         }
 
         public override string ToString()
@@ -32,25 +35,19 @@ namespace Cobalt.Unit
         }
 
 
-        public void Interact(Func<Interactions, UnitInteraction> interact)
-        {
-            var unitInteraction = interact(new Interactions());
-            unitInteraction.Run(this);
-            Interactions.Add(unitInteraction);
-        }
 
-        public static CobaltUnit Make(IEnumerable<KeyValuePair<string, object>> existingValues)
+
+        public static Unit Make(IEnumerable<KeyValuePair<string, object>> existingValues)
         {
-            return new CobaltUnit(PersistentFactMap.Empty
+            return new Unit(PersistentFactMap.Empty
                 .Add(existingValues,
                     x => x.Key,
                     x => x.Value));
         }
     }
 
-
-
-    public class UnitQualities
+    public interface IInteractionReciever<T>
     {
+        void ReceiveInteraction(T newFact);
     }
 }

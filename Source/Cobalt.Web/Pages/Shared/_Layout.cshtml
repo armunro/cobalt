@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewData["Title"]</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="~/css/boostrapOverride.css" rel="stylesheet"/>
+
+
+</head>
+
+<body class="h-100">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container-fluid p-0">
+        <img height="32px" src="img/logo.png"/>
+        <a class="navbar-brand p-0" href="/">
+            <h3 class="py-0 my-0 mx-2 text-white">COBALT V1</h3>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        Dashboard
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Page("./Pipe")">Pipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Page("./Channel")">Channels</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Page("./Channel")">Listeners</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+@RenderBody()
+
+<!-- Bootstrap core JavaScript -->
+<script src="~/lib/jquery/jquery.slim.min.js"></script>
+<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+</body>
+
+</html>

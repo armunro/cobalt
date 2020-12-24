@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Cobalt.Pipeline;
-using Cobalt.Unit;
 
 namespace Cobalt
 {
     public class Cb
     {
-        public static CobaltPipeline Pipe => new CobaltPipeline();
-        public static CobaltUnit Unit() => new CobaltUnit();
-        public static CobaltUnit Unit(dynamic source) => CobaltUnit.Make(AsDictionary(source));
+        public static Pipe Pipe => new Pipe();
+        public static Unit.Unit Unit() => new Unit.Unit();
+        public static Unit.Unit Unit(dynamic source) => Cobalt.Unit.Unit.Make(AsDictionary(source));
 
       
         

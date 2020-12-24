@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\img" />
+      <Folder Include="wwwroot\lib" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cobalt\Cobalt.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="second.csv" />
+      <None Remove="first.csv" />
+    </ItemGroup>
+
+</Project>

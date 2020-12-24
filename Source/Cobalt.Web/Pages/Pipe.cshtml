@@ -1,0 +1,167 @@
+﻿@page
+@model Cobalt.Web.Pages.Pipe
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-md-3 h-100 p-2     box-shadow: -14px 0px 30px #000000;">
+            <div class="card mb-3 ">
+                <div class="card-header p-2 bg-info text-light">
+                    <h4 class="text-center m-0">Start</h4>
+                </div>
+                <div class="card-body">
+                    <div class="btn-group w100" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary">New Unit</button>
+                        <button type="button" class="btn btn-secondary">New UnitSet</button>
+                        <button type="button" class="btn btn-secondary">Sample Pipeline</button>
+                    </div>
+                </div>
+                @{ var i = 1; }
+            </div>
+            @foreach (var stage in Model.Pipeline.Stages)
+            {
+                var stageDesc = stage.Describe();
+                Guid expandGuid = Guid.NewGuid();
+
+                <div class="card mb-3">
+                    <div class="card-header p-2 bg-dark text-light">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-1 p-0">
+                                    <button type="button" class="btn btn-info py-1 px-2 ">@(i++)</button>
+                                </div>
+                                <div class="col-md-11 p-0">
+                                    <h4 class="py-0 my-0 mt-1">@stageDesc.Name</h4>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="card-body">
+
+                        <p class="mb-1">@stage.Describe().Purpose</p>
+                        @if (stageDesc.RequiredParameters.Any())
+                        {
+                            <a class="d-block" data-toggle="collapse" href="#p@(expandGuid)" role="button" aria-expanded="false">
+                                Parameters <span class="badge badge-danger float-right">@(stageDesc.RequiredParameters.Count) Required</span>
+                            </a>
+
+
+                            <div class="collapse" id="p@(expandGuid)">
+
+
+                                <div class="input-group mb-3">
+                                    <table class="table table-sm  table-borderless">
+                                        <thead class="table-dark">
+                                        <tr>
+                                            <td>
+                                                Name
+                                            </td>
+                                            <td>
+                                                Type
+                                            </td>
+                                            <td>
+                                                Value
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach (var param in stageDesc.RequiredParameters)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @param.Name
+                                                </td>
+                                                <td>
+                                                    @param.PropertyType
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" aria-label="string value"/>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+
+
+                            </div>
+                        }
+
+                        @if (stageDesc.RequiredParameters.Any())
+                        {
+                            <a class="d-block" data-toggle="collapse" href="#v@(expandGuid)" role="button" aria-expanded="false">
+                                Visualizers
+                            </a>
+
+
+                            <div class="collapse" id="v@(expandGuid)">
+
+
+                                <div class="input-group mb-3">
+                                    <table class="table table-sm  table-borderless">
+                                        <thead class="table-dark">
+                                        <tr>
+                                            <td>
+                                                Name
+                                            </td>
+                                            <td>
+                                                Type
+                                            </td>
+                                            <td>
+                                                Value
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach (var param in stageDesc.RequiredParameters)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @param.Name
+                                                </td>
+                                                <td>
+                                                    @param.PropertyType
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" aria-label="string value"/>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <div class="col-md-9 h-100 p-2">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header p-2">
+                    <h4 class="my-0">Pipe Flow</h4>
+                </div>
+                <div class="card-body bg-light text-dark">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
