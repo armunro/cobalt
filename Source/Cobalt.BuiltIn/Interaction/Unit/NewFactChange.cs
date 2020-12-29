@@ -1,11 +1,11 @@
 ﻿namespace Cobalt.BuiltIn.Interaction.Unit
 {
-    public class NewFactCoChange : UnitCoChange
+    public class NewFactChange : UnitChange
     {
         public string FactName { get; }
         public object FactValue { get; }
 
-        public NewFactCoChange(string factName, object factValue)
+        public NewFactChange(string factName, object factValue)
         {
             FactName = factName;
             FactValue = factValue;

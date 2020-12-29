@@ -1,6 +1,6 @@
 ﻿namespace Cobalt
 {
-    public abstract class CoChange
+    public abstract class Change
     {
         
 

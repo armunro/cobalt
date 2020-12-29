@@ -7,8 +7,8 @@
     
     public class UnitFactInteractions
     {
-        public NewFactCoChange Create(string factName, object factValue) =>
-            new NewFactCoChange(factName, factValue);
+        public NewFactChange Create(string factName, object factValue) =>
+            new NewFactChange(factName, factValue);
     }
     
     public class UnitInteractions

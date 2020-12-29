@@ -89,24 +89,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoChange.cs" />
-    <Compile Include="CoChangeSet.cs" />
-    <Compile Include="Collections\Map\FactMap.cs" />
-    <Compile Include="Collections\Map\FactMapVersionRef.cs" />
-    <Compile Include="Collections\Map\Node\Enums.cs" />
-    <Compile Include="Collections\Map\Node\FactHashCollisionArray.cs" />
-    <Compile Include="Collections\Map\Node\FactMapNode.cs" />
-    <Compile Include="Collections\Map\PersistentFactMap.cs" />
-    <Compile Include="Collections\Map\TransientFactMap.cs" />
-    <Compile Include="CoPipe.cs" />
-    <Compile Include="CoUnit.cs" />
+    <Compile Include="Core\Change.cs" />
+    <Compile Include="Core\ChangeSet.cs" />
+    <Compile Include="Core\Pipe.cs" />
+    <Compile Include="Core\Stage.cs" />
+    <Compile Include="Core\Structures\FactMap\FactMap.cs" />
+    <Compile Include="Core\Structures\FactMap\FactMapVersionRef.cs" />
+    <Compile Include="Core\Structures\FactMap\Node\Enums.cs" />
+    <Compile Include="Core\Structures\FactMap\Node\FactHashCollisionArray.cs" />
+    <Compile Include="Core\Structures\FactMap\Node\FactMapNode.cs" />
+    <Compile Include="Core\Structures\FactMap\PersistentFactMap.cs" />
+    <Compile Include="Core\Structures\FactMap\TransientFactMap.cs" />
+    <Compile Include="Core\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolver\Resolution\CachedResolution.cs" />
     <Compile Include="Resolver\Resolution\Resolution.cs" />
     <Compile Include="Resolver\Resolver.cs" />
     <Compile Include="Resolver\ResolverKey.cs" />
     <Compile Include="Resolver\ValueObject.cs" />
-    <Compile Include="CoStage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -115,8 +115,7 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Changes" />
-    <Folder Include="Collections" />
+    <Folder Include="Core\Structures" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

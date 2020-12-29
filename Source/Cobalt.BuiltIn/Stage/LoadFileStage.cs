@@ -4,19 +4,19 @@ using Cobalt.BuiltIn.Interaction.Unit;
 
 namespace Cobalt.BuiltIn.Stage
 {
-    public class LoadFileCoStage : CoStage
+    public class LoadFileStage : Cobalt.Stage
     {
         public string FilePath { get; set; }
         public string ToFact { get; set; }
 
 
-        public override CoChangeSet<CoStage> PrepareInteractionPlan(CoUnit coUnit)
+        public override ChangeSet<Cobalt.Stage> PrepareInteractionPlan(Unit unit)
         {
-            return new CoChangeSet<CoStage>()
+            return new ChangeSet<Cobalt.Stage>()
             {
-                Interactions = new List<CoChange>()
+                Changes = new List<Change>()
                 {
-                    new NewFactCoChange(ToFact, File.ReadAllText(FilePath))
+                    new NewFactChange(ToFact, File.ReadAllText(FilePath))
                 }
             };
         }

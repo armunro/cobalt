@@ -5,18 +5,18 @@ namespace Cobalt.Web.Pages
 {
     public class Pipe : PageModel
     {
-        public CoPipe Pipeline { get; set; }
+        public Cobalt.Pipe Pipeline { get; set; }
 
         public void OnGet()
         {
-            Pipeline = new CoPipe()
-                .Stage<LoadFileCoStage>(stg =>
+            Pipeline = new Cobalt.Pipe()
+                .Stage<LoadFileStage>(stg =>
                 {
                     stg.FilePath = "sample.csv";
                     stg.ToFact = "Content";
                 });
 
-            Pipeline.In(CoUnit.Make());
+            Pipeline.In(Unit.Make());
         }
     }
 }
