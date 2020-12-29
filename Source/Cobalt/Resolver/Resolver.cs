@@ -15,9 +15,9 @@ namespace Cobalt.Resolver
             return this;
         }
 
-        public Resolver<T> Cached(ResolverKey key, Func<T> resolutionFunc)
+        public Resolver<T> Cached(ResolverKey key, Func<T> resolveFunc)
         {
-            Registered.Add(key, new CachedResolution<T>(resolutionFunc));
+            Registered.Add(key, new CachedResolution<T>(resolveFunc));
             return this;
         }
 

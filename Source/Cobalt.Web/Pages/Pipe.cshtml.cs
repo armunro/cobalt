@@ -1,15 +1,16 @@
-﻿using Cobalt.BuiltIn.Stage;
+﻿using Cobalt.BuiltIn.Stages.Files;
+using Cobalt.Core;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Cobalt.Web.Pages
 {
     public class Pipe : PageModel
     {
-        public Cobalt.Pipe Pipeline { get; set; }
+        public Core.Pipe Pipeline { get; set; }
 
         public void OnGet()
         {
-            Pipeline = new Cobalt.Pipe()
+            Pipeline = new Core.Pipe()
                 .Stage<LoadFileStage>(stg =>
                 {
                     stg.FilePath = "sample.csv";

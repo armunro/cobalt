@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Cobalt
+namespace Cobalt.Core
 {
     public class Pipe
     {

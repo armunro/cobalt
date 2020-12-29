@@ -4,17 +4,29 @@
     <e p="C:\Source\cobalt\Source" t="IncludeFlat">
       <e p="cobalt" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Cb.cs" t="Include" />
         <e p="Cobalt.csproj" t="IncludeRecursive" />
-        <e p="Interaction" t="Include">
-          <e p="CoInteract.cs" t="Include" />
-          <e p="CoInteractPath.cs" t="Include" />
+        <e p="Core" t="Include">
+          <e p="Change.cs" t="Include" />
+          <e p="ChangeSet.cs" t="Include" />
+          <e p="Pipe.cs" t="Include" />
+          <e p="Stage.cs" t="Include" />
+          <e p="Structures" t="Include">
+            <e p="FactMap" t="Include">
+              <e p="FactMap.cs" t="Include" />
+              <e p="FactMapVersionRef.cs" t="Include" />
+              <e p="Node" t="Include">
+                <e p="Enums.cs" t="Include" />
+                <e p="FactHashCollisionArray.cs" t="Include" />
+                <e p="FactMapNode.cs" t="Include" />
+              </e>
+              <e p="PersistentFactMap.cs" t="Include" />
+              <e p="TransientFactMap.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Unit.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
-        <e p="Pipeline" t="Include">
-          <e p="CoPipe.cs" t="Include" />
-        </e>
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
@@ -28,25 +40,6 @@
           <e p="ResolverKey.cs" t="Include" />
           <e p="ValueObject.cs" t="Include" />
         </e>
-        <e p="Stage" t="Include">
-          <e p="Stage.cs" t="Include" />
-        </e>
-        <e p="Unit" t="Include">
-          <e p="CoUnit.cs" t="Include" />
-          <e p="Fact" t="Include">
-            <e p="Map" t="Include">
-              <e p="FactMap.cs" t="Include" />
-              <e p="FactMapVersionRef.cs" t="Include" />
-              <e p="Node" t="Include">
-                <e p="Enums.cs" t="Include" />
-                <e p="FactHashCollisionArray.cs" t="Include" />
-                <e p="FactMapNode.cs" t="Include" />
-              </e>
-              <e p="PersistentFactMap.cs" t="Include" />
-              <e p="TransientFactMap.cs" t="Include" />
-            </e>
-          </e>
-        </e>
       </e>
       <e p="Cobalt.BuiltIn" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -54,13 +47,15 @@
         <e p="Interaction" t="Include">
           <e p="Unit" t="Include">
             <e p="InteractionBuilder.cs" t="Include" />
-            <e p="NewFactCoInteract.cs" t="Include" />
-            <e p="UnitCoInteract.cs" t="Include" />
+            <e p="NewFactChange.cs" t="Include" />
+            <e p="UnitChange.cs" t="Include" />
           </e>
         </e>
         <e p="obj" t="ExcludeRecursive" />
-        <e p="Stage" t="Include">
-          <e p="LoadFileStage.cs" t="Include" />
+        <e p="Stages" t="Include">
+          <e p="Files" t="Include">
+            <e p="LoadFileStage.cs" t="Include" />
+          </e>
           <e p="ParseCsvStage.cs" t="Include" />
         </e>
       </e>

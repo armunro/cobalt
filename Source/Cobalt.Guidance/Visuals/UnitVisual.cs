@@ -1,4 +1,6 @@
-﻿namespace Cobalt.Guidance.Visuals
+﻿using Cobalt.Core;
+
+namespace Cobalt.Guidance.Visuals
 {
     public class UnitVisual : Visual<Unit>
     {

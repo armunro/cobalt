@@ -1,4 +1,4 @@
-namespace Cobalt
+namespace Cobalt.Core
 {
     public abstract class Stage 
     {

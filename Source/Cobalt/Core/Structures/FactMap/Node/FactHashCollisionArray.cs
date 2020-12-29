@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Cobalt.Collections.Map.Node
+namespace Cobalt.Core.Structures.FactMap.Node
 {
     /// <summary>
     ///     Simple implementation of collision collection using persistent array

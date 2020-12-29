@@ -41,8 +41,8 @@
       <Compile Include="Interaction\Unit\InteractionBuilder.cs" />
       <Compile Include="Interaction\Unit\NewFactChange.cs" />
       <Compile Include="Interaction\Unit\UnitChange.cs" />
-      <Compile Include="Stage\LoadFileStage.cs" />
-      <Compile Include="Stage\ParseCsvStage.cs">
+      <Compile Include="Stages\Files\LoadFileStage.cs" />
+      <Compile Include="Stages\ParseCsvStage.cs">
         <DependentUpon>Pipe.cshtml</DependentUpon>
       </Compile>
     </ItemGroup>

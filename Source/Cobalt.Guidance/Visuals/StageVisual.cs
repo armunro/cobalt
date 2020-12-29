@@ -1,4 +1,5 @@
-﻿using Cobalt.Guidance.Descriptions;
+﻿using Cobalt.Core;
+using Cobalt.Guidance.Descriptions;
 
 namespace Cobalt.Guidance.Visuals
 {

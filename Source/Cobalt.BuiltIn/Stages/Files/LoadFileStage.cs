@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Cobalt.BuiltIn.Interaction.Unit;
+using Cobalt.Core;
 
-namespace Cobalt.BuiltIn.Stage
+namespace Cobalt.BuiltIn.Stages.Files
 {
-    public class LoadFileStage : Cobalt.Stage
+    public class LoadFileStage : Stage
     {
         public string FilePath { get; set; }
         public string ToFact { get; set; }
 
 
-        public override ChangeSet<Cobalt.Stage> PrepareInteractionPlan(Unit unit)
+        public override ChangeSet<Stage> PrepareInteractionPlan(Unit unit)
         {
-            return new ChangeSet<Cobalt.Stage>()
+            return new ChangeSet<Stage>()
             {
                 Changes = new List<Change>()
                 {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cobalt.Collections.Map.Node;
+using Cobalt.Core.Structures.FactMap.Node;
 
-namespace Cobalt.Collections.Map
+namespace Cobalt.Core.Structures.FactMap
 {
     public sealed class TransientFactMap: FactMap, IEnumerable<KeyValuePair<string, object>>
     {

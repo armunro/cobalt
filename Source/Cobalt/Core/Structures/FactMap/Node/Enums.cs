@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cobalt.Collections.Map.Node
+namespace Cobalt.Core.Structures.FactMap.Node
 {
     [Flags]
     public enum FactNodeChangeState

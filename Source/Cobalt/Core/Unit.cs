@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Cobalt.Collections.Map;
+using Cobalt.Core.Structures.FactMap;
 
-namespace Cobalt
+namespace Cobalt.Core
 {
     public class Unit
     {
