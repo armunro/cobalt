@@ -6,12 +6,12 @@ namespace Cobalt.Pipeline
     public class CoPipe
     {
      
-        public List<Stage.Stage> Stages { get; set; }
+        public List<Stage.CoStage> Stages { get; set; }
 
 
         public CoPipe()
         {
-            Stages = new List<Stage.Stage>();
+            Stages = new List<Stage.CoStage>();
         }
 
 
@@ -34,11 +34,11 @@ namespace Cobalt.Pipeline
         }
         
 
-        public CoPipe Stage<TStage>(Action<TStage> stageConfig) where TStage: Stage.Stage
+        public CoPipe Stage<TStage>(Action<TStage> stageConfig) where TStage: Stage.CoStage
         {
-            Stage.Stage stage = Activator.CreateInstance<TStage>();
-            stageConfig((TStage)stage);
-            Stages.Add(stage);
+            Stage.CoStage coStage = Activator.CreateInstance<TStage>();
+            stageConfig((TStage)coStage);
+            Stages.Add(coStage);
             return this;
         }
     }

@@ -5,15 +5,15 @@ using Cobalt.Interaction;
 
 namespace Cobalt.BuiltIn.Stage
 {
-    public class LoadFileStage : Cobalt.Stage.Stage
+    public class LoadFileCoStage : Cobalt.Stage.CoStage
     {
         public string FilePath { get; set; }
         public string ToFact { get; set; }
 
 
-        public override CoInteractPath<Cobalt.Stage.Stage> PrepareInteractionPlan(Unit.CoUnit coUnit)
+        public override CoInteractPath<Cobalt.Stage.CoStage> PrepareInteractionPlan(Unit.CoUnit coUnit)
         {
-            return new CoInteractPath<Cobalt.Stage.Stage>()
+            return new CoInteractPath<Cobalt.Stage.CoStage>()
             {
                 Interactions = new List<Cobalt.Interaction.CoInteract>()
                 {

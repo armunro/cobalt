@@ -2,13 +2,13 @@
 
 namespace Cobalt.BuiltIn.Stage
 {
-    public class ParseCsvStage : Cobalt.Stage.Stage
+    public class ParseCsvCoStage : Cobalt.Stage.CoStage
     {
         public string FromFact { get; set; }
         public string ToFact { get; set; }
 
-        public override CoInteractPath<Cobalt.Stage.Stage> PrepareInteractionPlan(Unit.CoUnit coUnit) =>
-            new CoInteractPath<Cobalt.Stage.Stage>();
+        public override CoInteractPath<Cobalt.Stage.CoStage> PrepareInteractionPlan(Unit.CoUnit coUnit) =>
+            new CoInteractPath<Cobalt.Stage.CoStage>();
 
         // public override StageDescription Describe() =>
         //     new StageDescription()

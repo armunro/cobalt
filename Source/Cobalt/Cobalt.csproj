@@ -90,30 +90,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cb.cs" />
+    <Compile Include="Collections\Map\FactMap.cs" />
+    <Compile Include="Collections\Map\FactMapVersionRef.cs" />
+    <Compile Include="Collections\Map\Node\Enums.cs" />
+    <Compile Include="Collections\Map\Node\FactHashCollisionArray.cs" />
+    <Compile Include="Collections\Map\Node\FactMapNode.cs" />
+    <Compile Include="Collections\Map\PersistentFactMap.cs" />
+    <Compile Include="Collections\Map\TransientFactMap.cs" />
+    <Compile Include="CoPipe.cs" />
+    <Compile Include="CoUnit.cs" />
     <Compile Include="Interaction\CoInteract.cs" />
     <Compile Include="Interaction\CoInteractPath.cs" />
-    <Compile Include="Pipeline\CoPipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolver\Resolution\CachedResolution.cs" />
     <Compile Include="Resolver\Resolution\Resolution.cs" />
     <Compile Include="Resolver\Resolver.cs" />
     <Compile Include="Resolver\ResolverKey.cs" />
     <Compile Include="Resolver\ValueObject.cs" />
-    <Compile Include="Stage\Stage.cs" />
-    <Compile Include="Unit\CoUnit.cs" />
-    <Compile Include="Unit\Fact\Map\Node\FactHashCollisionArray.cs" />
-    <Compile Include="Unit\Fact\Map\Node\Enums.cs" />
-    <Compile Include="Unit\Fact\Map\FactMap.cs" />
-    <Compile Include="Unit\Fact\Map\Node\FactMapNode.cs" />
-    <Compile Include="Unit\Fact\Map\FactMapVersionRef.cs" />
-    <Compile Include="Unit\Fact\Map\PersistentFactMap.cs" />
-    <Compile Include="Unit\Fact\Map\TransientFactMap.cs" />
+    <Compile Include="CoStage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Collections" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

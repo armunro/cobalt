@@ -2,7 +2,7 @@
 
 namespace Cobalt.Guidance.Visuals
 {
-    public class StageVisual : Visual<Stage.Stage>
+    public class StageVisual : Visual<Stage.CoStage>
     {
 
 

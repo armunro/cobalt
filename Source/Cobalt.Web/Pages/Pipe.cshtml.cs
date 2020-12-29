@@ -10,7 +10,7 @@ namespace Cobalt.Web.Pages
         public void OnGet()
         {
             Pipeline = Cb.CoPipe
-                .Stage<LoadFileStage>(stg =>
+                .Stage<LoadFileCoStage>(stg =>
                 {
                     stg.FilePath = "sample.csv";
                     stg.ToFact = "Content";
