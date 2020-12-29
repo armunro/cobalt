@@ -1,6 +1,4 @@
-﻿using Cobalt.Unit;
-
-namespace Cobalt.Guidance.Visuals
+﻿namespace Cobalt.Guidance.Visuals
 {
     public class UnitVisual : Visual<CoUnit>
     {

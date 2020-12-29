@@ -89,7 +89,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cb.cs" />
+    <Compile Include="CoChange.cs" />
+    <Compile Include="CoChangeSet.cs" />
     <Compile Include="Collections\Map\FactMap.cs" />
     <Compile Include="Collections\Map\FactMapVersionRef.cs" />
     <Compile Include="Collections\Map\Node\Enums.cs" />
@@ -99,8 +100,6 @@
     <Compile Include="Collections\Map\TransientFactMap.cs" />
     <Compile Include="CoPipe.cs" />
     <Compile Include="CoUnit.cs" />
-    <Compile Include="Interaction\CoInteract.cs" />
-    <Compile Include="Interaction\CoInteractPath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolver\Resolution\CachedResolution.cs" />
     <Compile Include="Resolver\Resolution\Resolution.cs" />
@@ -116,6 +115,7 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Changes" />
     <Folder Include="Collections" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

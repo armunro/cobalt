@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Cobalt.Unit.Fact.Map.Persistent;
+using Cobalt.Collections.Map;
 
-namespace Cobalt.Unit
+namespace Cobalt
 {
     public class CoUnit
     {
@@ -33,6 +33,11 @@ namespace Cobalt.Unit
                 .Add(existingValues,
                     x => x.Key,
                     x => x.Value));
+        }
+        
+        public static CoUnit Make()
+        {
+            return new CoUnit(PersistentFactMap.Empty);
         }
     }
 }

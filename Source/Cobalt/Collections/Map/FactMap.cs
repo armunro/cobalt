@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Cobalt.Unit.Fact.Map.Node;
+using Cobalt.Collections.Map.Node;
 
-namespace Cobalt.Unit.Fact.Map
+namespace Cobalt.Collections.Map
 {
     [Serializable]
     public abstract class FactMap : IEnumerable<KeyValuePair<string, object>>

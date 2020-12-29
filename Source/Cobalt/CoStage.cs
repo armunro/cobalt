@@ -1,11 +1,9 @@
-using Cobalt.Interaction;
-
-namespace Cobalt.Stage
+namespace Cobalt
 {
     public abstract class CoStage 
     {
 
-        public abstract CoInteractPath<CoStage> PrepareInteractionPlan(Unit.CoUnit coUnit);
+        public abstract CoChangeSet<CoStage> PrepareInteractionPlan(CoUnit coUnit);
 
         public CoStage()
         {

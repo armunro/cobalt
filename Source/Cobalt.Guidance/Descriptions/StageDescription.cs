@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Cobalt.Guidance.Descriptions
 {
-    public class StageDescription : Description<Stage.CoStage>
+    public class StageDescription : Description<CoStage>
     {
         public List<PropertyInfo> RequiredParameters { get; } = new List<PropertyInfo>();
         public StageDescription Named(string name)

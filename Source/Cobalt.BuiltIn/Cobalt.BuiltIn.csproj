@@ -39,8 +39,8 @@
     </ItemGroup>
     <ItemGroup>
       <Compile Include="Interaction\Unit\InteractionBuilder.cs" />
-      <Compile Include="Interaction\Unit\NewFactCoInteract.cs" />
-      <Compile Include="Interaction\Unit\UnitCoInteract.cs" />
+      <Compile Include="Interaction\Unit\NewFactCoChange.cs" />
+      <Compile Include="Interaction\Unit\UnitCoChange.cs" />
       <Compile Include="Stage\LoadFileCoStage.cs" />
       <Compile Include="Stage\ParseCsvCoStage.cs">
         <DependentUpon>Pipe.cshtml</DependentUpon>

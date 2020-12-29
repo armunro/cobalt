@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cobalt.Unit.Fact.Map
+namespace Cobalt.Collections.Map
 {
     [Serializable]
     public class FactMapVersionRef { }

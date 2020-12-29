@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Cobalt.Pipeline
+namespace Cobalt
 {
     public class CoPipe
     {
      
-        public List<Stage.CoStage> Stages { get; set; }
+        public List<CoStage> Stages { get; set; }
 
 
         public CoPipe()
         {
-            Stages = new List<Stage.CoStage>();
+            Stages = new List<CoStage>();
         }
 
 
@@ -19,9 +19,9 @@ namespace Cobalt.Pipeline
 
    
         
-        public CoPipe In(params Unit.CoUnit[] units)
+        public CoPipe In(params CoUnit[] units)
         {
-            var newUnits = new List<Unit.CoUnit>();
+            var newUnits = new List<CoUnit>();
             foreach (var unit in units)
             {
                 foreach (var stage in Stages) 
@@ -34,9 +34,9 @@ namespace Cobalt.Pipeline
         }
         
 
-        public CoPipe Stage<TStage>(Action<TStage> stageConfig) where TStage: Stage.CoStage
+        public CoPipe Stage<TStage>(Action<TStage> stageConfig) where TStage: CoStage
         {
-            Stage.CoStage coStage = Activator.CreateInstance<TStage>();
+            CoStage coStage = Activator.CreateInstance<TStage>();
             stageConfig((TStage)coStage);
             Stages.Add(coStage);
             return this;

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cobalt.Unit.Fact.Map.Node;
-using Cobalt.Unit.Fact.Map.Transient;
+using Cobalt.Collections.Map.Node;
 
-namespace Cobalt.Unit.Fact.Map.Persistent
+namespace Cobalt.Collections.Map
 {
     [Serializable]
     public class PersistentFactMap : FactMap, IEnumerable<KeyValuePair<string, object>>, IEquatable<PersistentFactMap>
