@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fizzler, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4ebff4844e382110">
+      <HintPath>..\packages\Fizzler.1.2.0\lib\netstandard2.0\Fizzler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
       <Private>True</Private>
@@ -44,6 +48,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="Svg, Version=3.1.0.0, Culture=neutral, PublicKeyToken=12a0bac221edeae2">
+      <HintPath>..\packages\Svg.3.1.1\lib\net452\Svg.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -82,37 +90,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cb.cs" />
-    <Compile Include="Guidance\Diagrams\Visual.cs">
-      <DependentUpon>Pipe.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Guidance\Text\Descriptions\Description.cs" />
-    <Compile Include="Guidance\Text\Descriptions\IGivesDescription.cs" />
-    <Compile Include="Guidance\Diagrams\IGivesVisual.cs" />
-    <Compile Include="Guidance\Text\Descriptions\PipeDescription.cs" />
-    <Compile Include="Interaction\Interaction.cs" />
-    <Compile Include="Interaction\InteractionBuilder.cs" />
-    <Compile Include="Interaction\InteractionPlan.cs" />
-    <Compile Include="Interaction\Unit\NewFactInteraction.cs" />
-    <Compile Include="Interaction\Unit\Resolver.cs" />
-    <Compile Include="Interaction\Unit\UnitInteraction.cs" />
-    <Compile Include="Pipeline\Pipe.cs" />
-    <Compile Include="Pipeline\Stage\ParseCsvStage.cs">
-      <DependentUpon>Pipe.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Pipeline\Stage\Stage.cs" />
-    <Compile Include="Pipeline\Stage\LoadFileStage.cs" />
-    <Compile Include="Pipeline\Stage\StageDescription.cs" />
+    <Compile Include="Interaction\CoInteract.cs" />
+    <Compile Include="Interaction\CoInteractPath.cs" />
+    <Compile Include="Pipeline\CoPipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unit\Unit.cs" />
-    <Compile Include="Unit\Fact\Helpers.cs" />
+    <Compile Include="Resolver\Resolution\CachedResolution.cs" />
+    <Compile Include="Resolver\Resolution\Resolution.cs" />
+    <Compile Include="Resolver\Resolver.cs" />
+    <Compile Include="Resolver\ResolverKey.cs" />
+    <Compile Include="Resolver\ValueObject.cs" />
+    <Compile Include="Stage\Stage.cs" />
+    <Compile Include="Unit\CoUnit.cs" />
     <Compile Include="Unit\Fact\Map\Node\FactHashCollisionArray.cs" />
     <Compile Include="Unit\Fact\Map\Node\Enums.cs" />
-    <Compile Include="Unit\Fact\Map\Persistent\PersistentFactMap.cs" />
-    <Compile Include="Unit\Fact\Map\Transient\TransientFactMap.cs" />
     <Compile Include="Unit\Fact\Map\FactMap.cs" />
     <Compile Include="Unit\Fact\Map\Node\FactMapNode.cs" />
     <Compile Include="Unit\Fact\Map\FactMapVersionRef.cs" />
-    <Compile Include="Unit\UnitQualities.cs" />
+    <Compile Include="Unit\Fact\Map\PersistentFactMap.cs" />
+    <Compile Include="Unit\Fact\Map\TransientFactMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

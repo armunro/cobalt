@@ -1,4 +1,5 @@
 ﻿@page
+@using Cobalt.Guidance.Descriptions
 @model Cobalt.Web.Pages.Pipe
 
 @{
@@ -23,7 +24,9 @@
             </div>
             @foreach (var stage in Model.Pipeline.Stages)
             {
-                var stageDesc = stage.Describe();
+                var stageDesc = new StageDescription()
+                    .Named("Load file into unit")
+                    .That("Reads all of the content of a local file into a unit fact.");
                 Guid expandGuid = Guid.NewGuid();
 
                 <div class="card mb-3">
@@ -43,7 +46,7 @@
                     </div>
                     <div class="card-body">
 
-                        <p class="mb-1">@stage.Describe().Purpose</p>
+                        <p class="mb-1">@stageDesc.Purpose</p>
                         @if (stageDesc.RequiredParameters.Any())
                         {
                             <a class="d-block" data-toggle="collapse" href="#p@(expandGuid)" role="button" aria-expanded="false">
@@ -158,6 +161,9 @@
                     <h4 class="my-0">Pipe Flow</h4>
                 </div>
                 <div class="card-body bg-light text-dark">
+                    <img style="width:200px" src="~/Visual?type=stage" />
+                    <br />
+                    <img style="width:200px" src="~/Visual?type=unit" />
                 </div>
             </div>
         </div>

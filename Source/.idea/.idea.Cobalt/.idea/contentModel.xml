@@ -6,47 +6,34 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Cb.cs" t="Include" />
         <e p="Cobalt.csproj" t="IncludeRecursive" />
-        <e p="Guidance" t="Include">
-          <e p="Diagrams" t="Include">
-            <e p="IGivesVisual.cs" t="Include" />
-            <e p="Visual.cs" t="Include" />
-          </e>
-          <e p="Text" t="Include">
-            <e p="Descriptions" t="Include">
-              <e p="Description.cs" t="Include" />
-              <e p="IGivesDescription.cs" t="Include" />
-              <e p="PipeDescription.cs" t="Include" />
-            </e>
-          </e>
-        </e>
         <e p="Interaction" t="Include">
-          <e p="Interaction.cs" t="Include" />
-          <e p="InteractionBuilder.cs" t="Include" />
-          <e p="InteractionPlan.cs" t="Include" />
-          <e p="Unit" t="Include">
-            <e p="NewFactInteraction.cs" t="Include" />
-            <e p="Resolver.cs" t="Include" />
-            <e p="UnitInteraction.cs" t="Include" />
-          </e>
+          <e p="CoInteract.cs" t="Include" />
+          <e p="CoInteractPath.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Pipeline" t="Include">
-          <e p="Pipe.cs" t="Include" />
-          <e p="Stage" t="Include">
-            <e p="LoadFileStage.cs" t="Include" />
-            <e p="ParseCsvStage.cs" t="Include" />
-            <e p="Stage.cs" t="Include" />
-            <e p="StageDescription.cs" t="Include" />
-          </e>
+          <e p="CoPipe.cs" t="Include" />
         </e>
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="README.md" t="Include" />
+        <e p="Resolver" t="Include">
+          <e p="Resolution" t="Include">
+            <e p="CachedResolution.cs" t="Include" />
+            <e p="Resolution.cs" t="Include" />
+          </e>
+          <e p="Resolver.cs" t="Include" />
+          <e p="ResolverKey.cs" t="Include" />
+          <e p="ValueObject.cs" t="Include" />
+        </e>
+        <e p="Stage" t="Include">
+          <e p="Stage.cs" t="Include" />
+        </e>
         <e p="Unit" t="Include">
+          <e p="CoUnit.cs" t="Include" />
           <e p="Fact" t="Include">
-            <e p="Helpers.cs" t="Include" />
             <e p="Map" t="Include">
               <e p="FactMap.cs" t="Include" />
               <e p="FactMapVersionRef.cs" t="Include" />
@@ -55,16 +42,46 @@
                 <e p="FactHashCollisionArray.cs" t="Include" />
                 <e p="FactMapNode.cs" t="Include" />
               </e>
-              <e p="Persistent" t="Include">
-                <e p="PersistentFactMap.cs" t="Include" />
-              </e>
-              <e p="Transient" t="Include">
-                <e p="TransientFactMap.cs" t="Include" />
-              </e>
+              <e p="PersistentFactMap.cs" t="Include" />
+              <e p="TransientFactMap.cs" t="Include" />
             </e>
           </e>
-          <e p="Unit.cs" t="Include" />
-          <e p="UnitQualities.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Cobalt.BuiltIn" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Cobalt.BuiltIn.csproj" t="IncludeRecursive" />
+        <e p="Interaction" t="Include">
+          <e p="Unit" t="Include">
+            <e p="InteractionBuilder.cs" t="Include" />
+            <e p="NewFactCoInteract.cs" t="Include" />
+            <e p="UnitCoInteract.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Stage" t="Include">
+          <e p="LoadFileStage.cs" t="Include" />
+          <e p="ParseCsvStage.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Cobalt.Guidance" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Cobalt.Guidance.csproj" t="IncludeRecursive" />
+        <e p="Descriptions" t="Include">
+          <e p="Description.cs" t="Include" />
+          <e p="IDescriber.cs" t="Include" />
+          <e p="StageDescription.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Visuals" t="Include">
+          <e p="GraphicResolverKey.cs" t="Include" />
+          <e p="Graphics" t="Include">
+            <e p="Graphic.cs" t="Include" />
+          </e>
+          <e p="IVisualizer.cs" t="Include" />
+          <e p="StageVisual.cs" t="Include" />
+          <e p="UnitVisual.cs" t="Include" />
+          <e p="Visual.cs" t="Include" />
         </e>
       </e>
       <e p="Cobalt.sln" t="IncludeFlat" />
@@ -73,7 +90,6 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Cobalt.Web.csproj" t="IncludeRecursive" />
-        <e p="first.csv" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -87,15 +103,18 @@
           <e p="Index.cshtml.cs" t="Include" />
           <e p="Pipe.cshtml" t="Include" />
           <e p="Pipe.cshtml.cs" t="Include" />
+          <e p="Registry.cshtml" t="Include" />
+          <e p="Registry.cshtml.cs" t="Include" />
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
           </e>
+          <e p="Visual.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
         </e>
-        <e p="second.csv" t="Include" />
+        <e p="sample.csv" t="Include" />
         <e p="Startup.cs" t="Include" />
         <e p="wwwroot" t="Include">
           <e p="css" t="Include">

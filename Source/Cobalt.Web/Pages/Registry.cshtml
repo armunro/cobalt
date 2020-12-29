@@ -1,0 +1,44 @@
+﻿@page
+@model Cobalt.Web.Pages.Registry
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-md-2 h-100 p-3">
+            <div role="tabpanel">
+                <!-- List group -->
+                <div class="list-group" id="registryType" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#home" role="tab">Graphics</a>
+                    <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#profile" role="tab">Pipelines</a>
+                    <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#messages" role="tab">Stages</a>
+                    <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#settings" role="tab">Channels</a>
+                </div>
+
+                <!-- Tab panes -->
+
+            </div>
+        </div>
+        <div class="col-md-10 h-100 p-3" style="padding-left:0px !important">
+            <div class="card">
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home" role="tabpanel">
+                            @foreach (var resolution in Model.GraphicResolver.Registered)
+                            {
+                                <h1>@resolution.Key.ToString()</h1>
+                                <h2>@resolution.Value</h2>
+                            }
+                        </div>
+                        <div class="tab-pane" id="profile" role="tabpanel">2</div>
+                        <div class="tab-pane" id="messages" role="tabpanel">3</div>
+                        <div class="tab-pane" id="settings" role="tabpanel">4</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

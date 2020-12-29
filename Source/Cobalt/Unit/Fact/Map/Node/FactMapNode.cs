@@ -47,9 +47,9 @@ namespace Cobalt.Unit.Fact.Map.Node
         }
 
         public int ReferenceCount => (_references != null) ? _references.Length : 0;
-        private int ValuePosition(int i) { return (i == 31) ? 0 : Helpers.BitCount((_vBitmap >> i + 1)); }
-        private int CollisionPosition(int i) { return (i == 31) ? 0 : Helpers.BitCount((_cBitmap >> i + 1)); }
-        private int ReferencePosition(int i) { return (i == 31) ? 0 : Helpers.BitCount((_rBitmap >> i + 1)); }
+        private int ValuePosition(int i) { return (i == 31) ? 0 : BitCount((_vBitmap >> i + 1)); }
+        private int CollisionPosition(int i) { return (i == 31) ? 0 : BitCount((_cBitmap >> i + 1)); }
+        private int ReferencePosition(int i) { return (i == 31) ? 0 : BitCount((_rBitmap >> i + 1)); }
 
         public FactNodeType GetNodeStateAt(int i)
         {
@@ -122,8 +122,8 @@ namespace Cobalt.Unit.Fact.Map.Node
 
             if (factMapVersionRef != null && factMapVersionRef != _factMapVersionRef)
             {
-                newCollisions = Helpers.Copy(_collisions);
-                newReferences = Helpers.Copy(_references);
+                newCollisions = Copy(_collisions);
+                newReferences = Copy(_references);
             }
 
             var newValues = AddToValues(ValuePosition(i), key, value);
@@ -181,15 +181,15 @@ namespace Cobalt.Unit.Fact.Map.Node
 
             if (factMapVersionRef == null || _factMapVersionRef != factMapVersionRef)
             {
-                newCollisions = Helpers.Copy(_collisions);
+                newCollisions = Copy(_collisions);
             }
 
             newCollisions[cIndex] = newCollisions[cIndex].Add(key, value, factMapVersionRef);
 
             if (factMapVersionRef != null && factMapVersionRef != _factMapVersionRef)
             {
-                newReferences = Helpers.Copy(_references);
-                newValues = Helpers.Copy(_values);
+                newReferences = Copy(_references);
+                newValues = Copy(_values);
             }
 
             return new FactMapNode()
@@ -232,7 +232,7 @@ namespace Cobalt.Unit.Fact.Map.Node
                 );
 
             var newReferences = (factMapVersionRef != null && factMapVersionRef != _factMapVersionRef)
-                ? Helpers.Copy(_references)
+                ? Copy(_references)
                 : _references;
 
             return new FactMapNode()
@@ -333,8 +333,8 @@ namespace Cobalt.Unit.Fact.Map.Node
                     return this;
                 }
 
-                if (newColisions == _collisions) newColisions = Helpers.Copy(_collisions);
-                if (newValues == _values) newValues = Helpers.Copy(_values);
+                if (newColisions == _collisions) newColisions = Copy(_collisions);
+                if (newValues == _values) newValues = Copy(_values);
             }
 
             return new FactMapNode()
@@ -364,11 +364,11 @@ namespace Cobalt.Unit.Fact.Map.Node
                     return this;
                 }
 
-                newValues = Helpers.Copy(_values);
-                newCollisions = Helpers.Copy(_collisions);
+                newValues = Copy(_values);
+                newCollisions = Copy(_collisions);
             }
 
-            var newReferences = Helpers.Copy(_references);
+            var newReferences = Copy(_references);
             newReferences[rIndex] = mapNode;
 
             return new FactMapNode()
@@ -391,7 +391,7 @@ namespace Cobalt.Unit.Fact.Map.Node
                 return _collisions;
             }
 
-            var newCollisions = Helpers.Copy(_collisions);
+            var newCollisions = Copy(_collisions);
             var collision = newCollisions[cIndex];
 
             newCollisions[cIndex] = collision.Change(key, value, factMapVersionRef);
@@ -409,7 +409,7 @@ namespace Cobalt.Unit.Fact.Map.Node
                 return _values;
             }
 
-            var newValues = Helpers.Copy(_values);
+            var newValues = Copy(_values);
             newValues[vIndex] = newPair;
 
             return newValues;
@@ -432,9 +432,9 @@ namespace Cobalt.Unit.Fact.Map.Node
 
             if (factMapVersionRef != null && _factMapVersionRef != factMapVersionRef)
             {
-                newReferences = Helpers.Copy(_references);
-                if (_values == newValues) newValues = Helpers.Copy(_values);
-                if (_collisions == newCollisions) newCollisions = Helpers.Copy(_collisions);
+                newReferences = Copy(_references);
+                if (_values == newValues) newValues = Copy(_values);
+                if (_collisions == newCollisions) newCollisions = Copy(_collisions);
             }
 
             return new FactMapNode()
@@ -532,7 +532,7 @@ namespace Cobalt.Unit.Fact.Map.Node
                 {
                     if (factMapVersionRef == null || factMapVersionRef != _factMapVersionRef)
                     {
-                        newCollisions = Helpers.Copy(_collisions);
+                        newCollisions = Copy(_collisions);
                     }
                     newCollisions[cIndex] = collision.Remove(key, factMapVersionRef);
                 }
@@ -556,9 +556,9 @@ namespace Cobalt.Unit.Fact.Map.Node
                     return this;
                 }
 
-                if (newValues == _values) newValues = Helpers.Copy(_values);
-                if (newCollisions == _collisions) newCollisions = Helpers.Copy(_collisions);
-                newReferences = Helpers.Copy(_references);
+                if (newValues == _values) newValues = Copy(_values);
+                if (newCollisions == _collisions) newCollisions = Copy(_collisions);
+                newReferences = Copy(_references);
             }
 
             return new FactMapNode()
@@ -615,8 +615,8 @@ namespace Cobalt.Unit.Fact.Map.Node
                     return this;
                 }
 
-                if (newValues == _values) newValues = Helpers.Copy(_values);
-                if (newCollisions == _collisions) newCollisions = Helpers.Copy(_collisions);
+                if (newValues == _values) newValues = Copy(_values);
+                if (newCollisions == _collisions) newCollisions = Copy(_collisions);
             }
 
             return new FactMapNode()
@@ -660,8 +660,8 @@ namespace Cobalt.Unit.Fact.Map.Node
                 }
                 else
                 {
-                    newValues = Helpers.Copy(_values);
-                    newCollisions = Helpers.Copy(_collisions);
+                    newValues = Copy(_values);
+                    newCollisions = Copy(_collisions);
                 }
             }
 
@@ -759,6 +759,15 @@ namespace Cobalt.Unit.Fact.Map.Node
             }
 
             return true;
+        }
+
+        public static T[] Copy<T>(T[] arr) => arr?.ToArray();
+
+        public static byte BitCount(uint i)
+        {
+            i = i - ((i >> 1) & 0x55555555);
+            i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
+            return (byte)((((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24);
         }
     }
 }

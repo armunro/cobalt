@@ -10,6 +10,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Cobalt.BuiltIn\Cobalt.BuiltIn.csproj" />
+      <ProjectReference Include="..\Cobalt.Guidance\Cobalt.Guidance.csproj" />
       <ProjectReference Include="..\Cobalt\Cobalt.csproj" />
     </ItemGroup>
 

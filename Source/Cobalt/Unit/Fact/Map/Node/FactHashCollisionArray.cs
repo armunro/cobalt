@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,7 +38,7 @@ namespace Cobalt.Unit.Fact.Map.Node
         public FactHashCollisionArray Add(string key, object item, FactMapVersionRef factMapVersionRef)
         {
             return new FactHashCollisionArray(
-                _collisions.Concat(Helpers.Yield(new KeyValuePair<string, object>(key, item))).ToArray(),
+                _collisions.Concat(Yield(new KeyValuePair<string, object>(key, item))).ToArray(),
                 HashCode, factMapVersionRef);
         }
 
@@ -66,7 +67,7 @@ namespace Cobalt.Unit.Fact.Map.Node
             return new FactHashCollisionArray(
                 _collisions
                     .Where(x => !key.Equals(x.Key))
-                    .Concat(Helpers.Yield(new KeyValuePair<string, object>(key, value)))
+                    .Concat(Yield(new KeyValuePair<string, object>(key, value)))
                     .ToArray(),
                 HashCode, factMapVersionRef);
         }
@@ -95,8 +96,13 @@ namespace Cobalt.Unit.Fact.Map.Node
 
         public IEnumerator<KeyValuePair<string, object>> GetEnumerator() => _collisions.AsEnumerable().GetEnumerator();
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         public KeyValuePair<string, object> GetRemainingValue(string removedKey) => _collisions.First(x => !removedKey.Equals(x.Key));
+
+        public static IEnumerable<T> Yield<T>(T item)
+        {
+            yield return item;
+        }
     }
 }

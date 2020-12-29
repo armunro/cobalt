@@ -1,23 +1,18 @@
-﻿using Cobalt.Pipeline.Stage;
+﻿using Cobalt.BuiltIn.Stage;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Cobalt.Web.Pages
 {
     public class Pipe : PageModel
     {
-        public Pipeline.Pipe Pipeline { get; set; }
+        public Pipeline.CoPipe Pipeline { get; set; }
 
         public void OnGet()
         {
-            Pipeline = Cb.Pipe
+            Pipeline = Cb.CoPipe
                 .Stage<LoadFileStage>(stg =>
                 {
-                    stg.FilePath = "first.csv";
-                    stg.ToFact = "Content";
-                })
-                .Stage<ParseCsvStage>(stg =>
-                {
-                    stg.FromFact = "Content";
+                    stg.FilePath = "sample.csv";
                     stg.ToFact = "Content";
                 });
 

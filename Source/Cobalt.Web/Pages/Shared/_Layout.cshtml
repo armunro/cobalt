@@ -41,10 +41,7 @@
                     <a class="nav-link" href="@Url.Page("./Pipe")">Pipes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Page("./Channel")">Channels</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Page("./Channel")">Listeners</a>
+                    <a class="nav-link" href="@Url.Page("./Registry")">Registries</a>
                 </li>
             </ul>
         </div>
@@ -59,8 +56,17 @@
 <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
     $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+      $('[data-toggle="tooltip"]').tooltip();
+      var triggerTabList = [].slice.call(document.querySelectorAll('#registryType a'))
+      triggerTabList.forEach(function (triggerEl) {
+        var tabTrigger = new bootstrap.Tab(triggerEl)
+      
+        triggerEl.addEventListener('click', function (event) {
+          event.preventDefault()
+          tabTrigger.show()
+        })
+      });
+    });
     </script>
 </body>
 

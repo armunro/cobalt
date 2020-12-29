@@ -2,14 +2,15 @@
 using System.Linq;
 using System.Reflection;
 using Cobalt.Pipeline;
+using Cobalt.Unit;
 
 namespace Cobalt
 {
     public class Cb
     {
-        public static Pipe Pipe => new Pipe();
-        public static Unit.Unit Unit() => new Unit.Unit();
-        public static Unit.Unit Unit(dynamic source) => Cobalt.Unit.Unit.Make(AsDictionary(source));
+        public static CoPipe CoPipe => new CoPipe();
+        public static CoUnit Unit() => new CoUnit();
+        public static CoUnit Unit(dynamic source) => CoUnit.Make(AsDictionary(source));
 
       
         
