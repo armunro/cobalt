@@ -1,6 +1,5 @@
-using Cobalt.Guidance.Visuals;
+using Cobalt.BuiltIn.Sourcing.Graphics;
 using Cobalt.Guidance.Visuals.Graphics;
-using Cobalt.Resolver;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +14,9 @@ namespace Cobalt.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton(new Resolver<Graphic>().Cached(new GraphicResolverKey("file"), () => new Graphic()));
+            GraphicSource source = new GraphicSource();
+            source.Connect(new GraphicSourceKey("file"),() => new Graphic() );
+            services.AddSingleton(source);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

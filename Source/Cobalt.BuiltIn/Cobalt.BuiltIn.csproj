@@ -32,17 +32,22 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+      <ProjectReference Include="..\Cobalt.Guidance\Cobalt.Guidance.csproj">
+        <Project>{5bc30062-53d3-41da-abd9-73a0cbcff093}</Project>
+        <Name>Cobalt.Guidance</Name>
+      </ProjectReference>
       <ProjectReference Include="..\Cobalt\Cobalt.csproj">
         <Project>{9811052c-435d-4ce6-b2d2-085cac09a7ee}</Project>
         <Name>Cobalt</Name>
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-      <Compile Include="Interaction\Unit\InteractionBuilder.cs" />
-      <Compile Include="Interaction\Unit\NewFactChange.cs" />
-      <Compile Include="Interaction\Unit\UnitChange.cs" />
-      <Compile Include="Stages\Files\LoadFileStage.cs" />
-      <Compile Include="Stages\ParseCsvStage.cs">
+      <Compile Include="Changes\Unit\NewFactChange.cs" />
+      <Compile Include="Changes\Unit\UnitChange.cs" />
+      <Compile Include="Sourcing\Graphics\GraphicSource.cs" />
+      <Compile Include="Sourcing\Graphics\GraphicSourceKey.cs" />
+      <Compile Include="Stages\Files\ReadFileContentsStage.cs" />
+      <Compile Include="Stages\Formats\ParseCsvStage.cs">
         <DependentUpon>Pipe.cshtml</DependentUpon>
       </Compile>
     </ItemGroup>

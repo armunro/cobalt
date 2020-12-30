@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane active" id="home" role="tabpanel">
-                            @foreach (var resolution in Model.GraphicResolver.Registered)
+                            @foreach (var resolution in Model.GraphicSource.Connections)
                             {
                                 <h1>@resolution.Key.ToString()</h1>
                                 <h2>@resolution.Value</h2>

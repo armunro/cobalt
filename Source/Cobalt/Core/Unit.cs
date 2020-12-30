@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Cobalt.Core.Structures.FactMap;
 
 namespace Cobalt.Core
@@ -8,12 +7,6 @@ namespace Cobalt.Core
     {
         public PersistentFactMap Facts { get; }
 
-
-        // [ctor]
-        internal Unit() : this(PersistentFactMap.Empty)
-        {
-        }
-
         // [ctor]
         private Unit(PersistentFactMap facts)
         {
@@ -21,11 +14,7 @@ namespace Cobalt.Core
         }
 
 
-        public override string ToString() => 
-            string.Join(", ", Facts.Select(pair => pair.Key + " = " + pair.Value ?? "(null)").ToArray());
-
-
-        public static Unit Make(IEnumerable<KeyValuePair<string, object>> existingValues) => 
+        public static Unit Make(IEnumerable<KeyValuePair<string, object>> existingValues) =>
             new Unit(PersistentFactMap.Empty.Add(existingValues, x => x.Key, x => x.Value));
 
         public static Unit Make() => new Unit(PersistentFactMap.Empty);

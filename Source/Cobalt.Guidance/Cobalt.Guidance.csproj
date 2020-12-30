@@ -41,7 +41,6 @@
       <Compile Include="Descriptions\Description.cs" />
       <Compile Include="Descriptions\IDescriber.cs" />
       <Compile Include="Descriptions\StageDescription.cs" />
-      <Compile Include="Visuals\GraphicResolverKey.cs" />
       <Compile Include="Visuals\Graphics\Graphic.cs" />
       <Compile Include="Visuals\IVisualizer.cs" />
       <Compile Include="Visuals\StageVisual.cs" />

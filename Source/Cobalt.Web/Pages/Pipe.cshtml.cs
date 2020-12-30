@@ -11,7 +11,7 @@ namespace Cobalt.Web.Pages
         public void OnGet()
         {
             Pipeline = new Core.Pipe()
-                .Stage<LoadFileStage>(stg =>
+                .Stage<ReadFileContentsStage>(stg =>
                 {
                     stg.FilePath = "sample.csv";
                     stg.ToFact = "Content";

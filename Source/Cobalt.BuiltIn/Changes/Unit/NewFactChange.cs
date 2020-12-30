@@ -1,4 +1,4 @@
-﻿namespace Cobalt.BuiltIn.Interaction.Unit
+﻿namespace Cobalt.BuiltIn.Changes.Unit
 {
     public class NewFactChange : UnitChange
     {
@@ -10,8 +10,5 @@
             FactName = factName;
             FactValue = factValue;
         }
-       
-
-        
     }
 }

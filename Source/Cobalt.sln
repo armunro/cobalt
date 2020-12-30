@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt", "Cobalt\Cobalt.csproj", "{9811052C-435D-4CE6-B2D2-085CAC09A7EE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{5CCE5897-E9A8-402F-9E01-6FE74A839C6B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Web", "Cobalt.Web\Cobalt.Web.csproj", "{2380EC34-B40E-42EB-8CF6-E57704FA4089}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.Guidance", "Cobalt.Guidance\Cobalt.Guidance.csproj", "{5BC30062-53D3-41DA-ABD9-73A0CBCFF093}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cobalt.BuiltIn", "Cobalt.BuiltIn\Cobalt.BuiltIn.csproj", "{A81A9032-61B3-448D-80C7-3465F16609CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{A1286090-AF8A-4D84-8675-5D20DEA5908A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Builtin", "Builtin", "{F60C4177-4C12-4895-B207-4813456EA86E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,7 @@ Global
 		SolutionGuid = {56EABBC8-6F27-4D5B-8702-CC25FDBBE6C4}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2380EC34-B40E-42EB-8CF6-E57704FA4089} = {5CCE5897-E9A8-402F-9E01-6FE74A839C6B}
+		{2380EC34-B40E-42EB-8CF6-E57704FA4089} = {A1286090-AF8A-4D84-8675-5D20DEA5908A}
+		{A81A9032-61B3-448D-80C7-3465F16609CF} = {F60C4177-4C12-4895-B207-4813456EA86E}
 	EndGlobalSection
 EndGlobal

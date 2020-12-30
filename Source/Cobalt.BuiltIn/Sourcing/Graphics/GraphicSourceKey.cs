@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
-using Cobalt.Resolver;
+using Cobalt.Sourcing;
 
-namespace Cobalt.Guidance.Visuals
+namespace Cobalt.BuiltIn.Sourcing.Graphics
 {
-    public class GraphicResolverKey : ResolverKey
+    public class GraphicSourceKey : ConnectKey
     {
         public string GraphicName { get; }
 
-        public GraphicResolverKey(string graphicName)
+        public GraphicSourceKey(string graphicName)
         {
             GraphicName = graphicName;
         }
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return GraphicName;

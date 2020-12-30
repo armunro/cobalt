@@ -102,11 +102,9 @@
     <Compile Include="Core\Structures\FactMap\TransientFactMap.cs" />
     <Compile Include="Core\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resolver\Resolution\CachedResolution.cs" />
-    <Compile Include="Resolver\Resolution\Resolution.cs" />
-    <Compile Include="Resolver\Resolver.cs" />
-    <Compile Include="Resolver\ResolverKey.cs" />
-    <Compile Include="Resolver\ValueObject.cs" />
+    <Compile Include="Sourcing\ConnectKey.cs" />
+    <Compile Include="Sourcing\Source.cs" />
+    <Compile Include="Sourcing\SourceConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

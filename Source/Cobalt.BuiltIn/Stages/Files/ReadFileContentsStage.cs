@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Cobalt.BuiltIn.Interaction.Unit;
+using Cobalt.BuiltIn.Changes.Unit;
 using Cobalt.Core;
 
 namespace Cobalt.BuiltIn.Stages.Files
 {
-    public class LoadFileStage : Stage
+    public class ReadFileContentsStage : Stage
     {
         public string FilePath { get; set; }
         public string ToFact { get; set; }
@@ -15,12 +15,8 @@ namespace Cobalt.BuiltIn.Stages.Files
         {
             return new ChangeSet<Stage>()
             {
-                Changes = new List<Change>()
-                {
-                    new NewFactChange(ToFact, File.ReadAllText(FilePath))
-                }
+                Changes = new List<Change>(new[] {new NewFactChange(ToFact, File.ReadAllText(FilePath))})
             };
         }
-        
     }
 }
